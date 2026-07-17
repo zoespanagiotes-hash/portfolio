@@ -1,0 +1,135 @@
+<footer
+  id="contact"
+  class="relative overflow-hidden border-t border-[#1E293B] bg-[#020617]"
+>
+  <!-- Διακριτικό background glow -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-1/2 top-0 h-64 w-64
+           -translate-x-1/2 -translate-y-1/2 rounded-full
+           bg-[#5FD4F0]/10 blur-3xl"
+  ></div>
+
+  <div class="relative mx-auto max-w-7xl px-6 py-16 lg:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1.3fr_1fr] lg:items-center">
+
+      <!-- Κείμενο και CTA -->
+      <div class="max-w-2xl">
+        <p
+          class="text-sm font-medium uppercase tracking-[0.3em] text-[#5FD4F0]"
+        >
+          Επικοινωνία
+        </p>
+
+        <h2
+          class="mt-4 text-3xl font-semibold tracking-tight text-[var(--fg)]
+                 sm:text-4xl"
+        >
+          Έχεις κάποια ιδέα ή πρόταση συνεργασίας;
+        </h2>
+
+        <p class="mt-5 max-w-xl text-base leading-7 text-[#94A3B8]">
+          Είμαι διαθέσιμος για νέες ευκαιρίες, ενδιαφέροντα projects και
+          συνεργασίες. Στείλε μου ένα μήνυμα και θα επικοινωνήσω μαζί σου.
+        </p>
+
+        <a
+          href="mailto:hello@example.com"
+          class="mt-8 inline-flex items-center gap-2 rounded-full
+                 bg-[#5FD4F0] px-6 py-3 text-sm font-semibold text-[#071118]
+                 transition duration-300
+                 hover:-translate-y-0.5 hover:bg-[#7DDEF4]
+                 focus:outline-none focus:ring-2 focus:ring-[#5FD4F0]
+                 focus:ring-offset-2 focus:ring-offset-[#020617]"
+        >
+          <span class="material-symbols-outlined text-xl">mail</span>
+          Στείλε μου email
+        </a>
+      </div>
+
+      <!-- Social links -->
+      <div class="lg:justify-self-end">
+        <p class="mb-4 text-sm text-[#64748B]">
+          Μπορείς επίσης να με βρεις εδώ
+        </p>
+
+        <nav aria-label="Social media">
+          <ul class="flex flex-wrap gap-3">
+
+            <li>
+              <a
+                href="https://www.linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                class="group inline-flex h-12 w-12 items-center justify-center
+                       rounded-full border border-[#334155] bg-[#0F172A]
+                       text-[#CBD5E1] transition duration-300
+                       hover:-translate-y-1 hover:border-[#5FD4F0]
+                       hover:text-[#5FD4F0]"
+              >
+                <span class="material-symbols-outlined">work</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                class="group inline-flex h-12 w-12 items-center justify-center
+                       rounded-full border border-[#334155] bg-[#0F172A]
+                       text-[#CBD5E1] transition duration-300
+                       hover:-translate-y-1 hover:border-[#5FD4F0]
+                       hover:text-[#5FD4F0]"
+              >
+                <span class="material-symbols-outlined">code</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Twitter"
+                class="group inline-flex h-12 w-12 items-center justify-center
+                       rounded-full border border-[#334155] bg-[#0F172A]
+                       text-[#CBD5E1] transition duration-300
+                       hover:-translate-y-1 hover:border-[#5FD4F0]
+                       hover:text-[#5FD4F0]"
+              >
+                <span class="material-symbols-outlined">chat</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div
+      class="mt-14 flex flex-col gap-3 border-t border-[#1E293B] pt-6
+             text-sm text-[#64748B]
+             sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>
+        © {{ currentYear }} Portfolio. Όλα τα δικαιώματα διατηρούνται.
+      </p>
+
+    <button
+      type="button"
+      (click)="scrollToTop()"
+      class="inline-flex items-center gap-1 transition hover:text-[#5FD4F0]"
+      aria-label="Επιστροφή στην κορυφή"
+    >
+      Επιστροφή στην κορυφή
+      <span class="material-symbols-outlined">
+        arrow_upward
+      </span>
+    </button>
+    </div>
+  </div>
+</footer>

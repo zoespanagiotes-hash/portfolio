@@ -4,10 +4,13 @@ import { NgIf } from '@angular/common';
 import { TimelineComponent } from "../../Components/timeline-component/timeline-component";
 import { NavbarComponent } from "../../Components/navbar-component/navbar-component";
 import { HeroComponent } from "../../Components/hero/hero";
+import { Footer } from "../../Components/footer/footer";
+import { Skills } from "../../Components/skills/skills";
+import { AboutMe } from "../../Components/about-me/about-me";
 
 @Component({
   selector: 'app-main',
-  imports: [NgIf, TimelineComponent, NavbarComponent, HeroComponent],
+  imports: [TimelineComponent, NavbarComponent, HeroComponent, Footer, Skills, AboutMe],
   templateUrl: './main.html',
   styleUrl: './main.scss',
 })

@@ -10,3 +10,21 @@ html::-webkit-scrollbar-thumb {
   scrollbar-width: thin;
   scrollbar-color: #666 #1e1e1e;
 }
+
+.desktop-nav {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}

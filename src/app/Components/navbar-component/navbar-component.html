@@ -12,27 +12,42 @@
     </div>
 
     @for (section of sections; track section){
-    <a
-      [href]="'#' + section.id"
-      (click)="onLinkClick($event, section.id)"
-      class="group relative z-10 flex h-9 w-9 items-center justify-center"
-      [attr.aria-current]="activeId() === section.id ? 'true' : null"
-      [attr.aria-label]="section.label"
-    >
-      <!-- ο δείκτης· γίνεται bold + λάμπει όταν το section είναι ενεργό -->
-     <span class="material-symbols-outlined">
-      {{ section.icon }}
-     </span>
+<a
+  [href]="'#' + section.id"
+  (click)="onLinkClick($event, section.id)"
+  class="group relative z-10 flex h-9 w-9 items-center justify-center"
+  [attr.aria-current]="activeId() === section.id ? 'page' : null"
+  [attr.aria-label]="section.label"
+>
+  <span
+    class="material-symbols-outlined transition-all duration-300
+           group-hover:scale-110 group-hover:text-[#5FD4F0]"
+    [class.text-[#5FD4F0]]="activeId() === section.id"
+    [class.text-[#64748B]]="activeId() !== section.id"
+    [class.drop-shadow-[0_0_5px_#5FD4F0]]="
+      activeId() === section.id
+    "
+    [style.font-variation-settings]="
+      activeId() === section.id
+        ? '\'FILL\' 1, \'wght\' 600, \'GRAD\' 0, \'opsz\' 24'
+        : '\'FILL\' 0, \'wght\' 400, \'GRAD\' 0, \'opsz\' 24'
+    "
+  >
+    {{ section.icon }}
+  </span>
 
-      <!-- ετικέτα· εμφανίζεται στο hover, και μένει ορατή όσο το section είναι ενεργό -->
-      <span
-        class="pointer-events-none absolute left-full ml-3 -translate-x-1 whitespace-nowrap rounded-md border border-[#1E2733] bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2] opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
-        [style.opacity]="activeId() === section.id ? 1 : null"
-        [style.transform]="activeId() === section.id ? 'translateX(0)' : null"
-      >
-        {{ section.label }}
-      </span>
-    </a>
+  <span
+    class="pointer-events-none absolute left-full ml-3 -translate-x-1
+           whitespace-nowrap rounded-md border border-[#1E2733]
+           bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2]
+           opacity-0 shadow-lg transition-all duration-200 ease-out
+           group-hover:translate-x-0 group-hover:opacity-100"
+    [class.translate-x-0]="activeId() === section.id"
+    [class.opacity-100]="activeId() === section.id"
+  >
+    {{ section.label }}
+  </span>
+</a>
     }
   </div>
 </nav>

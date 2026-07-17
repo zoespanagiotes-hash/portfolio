@@ -8,13 +8,15 @@
 .dark {
   --bg: #071124;
   --fg: #e7edf5;
+  --bgSecond: #0b1425;
 }
 
 body {
   background-color: var(--bg);
+  --background-secondary-color: var(--bgSecond);
   color: var(--fg);
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
