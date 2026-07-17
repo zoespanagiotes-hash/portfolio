@@ -1,0 +1,16 @@
+<app-navbar-component></app-navbar-component>
+<main class="min-h-screen bg-[var(--bg)] text-[var(--fg)] transition-colors duration-300">
+    <app-hero></app-hero>
+
+  <section class="mx-auto max-w-7xl px-6 py-16">
+    <div class="mx-auto max-w-4xl">
+      <app-timeline-component></app-timeline-component>
+    </div>
+  </section>
+
+  @if (notFoundMessage()){
+    <div class="fixed top-6 z-50 w-full max-w-sm rounded-xl border border-red-300 bg-rose-800 p-4 text-white shadow-lg shadow-red-500/20 sm:right-8">
+      {{ notFoundMessage() }}
+    </div>
+  }
+</main>
