@@ -1,0 +1,58 @@
+<!-- Desktop vertical nav (lg and up) -->
+<nav #desktopNav
+  (pointerdown)="startDrag($event)"
+  [class.at-projects]="activeId() === 'projects'"
+  class="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur lg:block"
+  aria-label="Πλοήγηση σελίδας"
+>
+  <div class="relative flex flex-col items-center gap-2 md:gap-8">
+    <div
+      class="pointer-events-none absolute left-1/2 top-1 bottom-1 w-px -translate-x-1/2 bg-[#1E2733]"
+    >
+    </div>
+
+    @for (section of sections; track section){
+    <a
+      [href]="'#' + section.id"
+      (click)="onLinkClick($event, section.id)"
+      class="group relative z-10 flex h-9 w-9 items-center justify-center"
+      [attr.aria-current]="activeId() === section.id ? 'true' : null"
+      [attr.aria-label]="section.label"
+    >
+      <!-- ο δείκτης· γίνεται bold + λάμπει όταν το section είναι ενεργό -->
+     <span class="material-symbols-outlined">
+      {{ section.icon }}
+     </span>
+
+      <!-- ετικέτα· εμφανίζεται στο hover, και μένει ορατή όσο το section είναι ενεργό -->
+      <span
+        class="pointer-events-none absolute left-full ml-3 -translate-x-1 whitespace-nowrap rounded-md border border-[#1E2733] bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2] opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+        [style.opacity]="activeId() === section.id ? 1 : null"
+        [style.transform]="activeId() === section.id ? 'translateX(0)' : null"
+      >
+        {{ section.label }}
+      </span>
+    </a>
+    }
+  </div>
+</nav>
+
+<!-- Mobile: hamburger in top-right that opens a compact nav -->
+<div class="fixed right-4 top-4 z-60 lg:hidden">
+  <button *ngIf="mobileBurgerVisible || mobileOpen" (click)="toggleMobileMenu()" aria-controls="mobile-nav" [attr.aria-expanded]="mobileOpen" aria-label="Άνοιγμα πλοήγησης" class="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[#1E2733] bg-[#10161F]/80 text-[#CFE9F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5FD4F0]">
+    <span *ngIf="!mobileOpen">
+      <span class="material-symbols-outlined inline-flex pt-1 items-center justify-center">
+        menu
+      </span>
+    </span>
+    <span *ngIf="mobileOpen">✕</span>
+  </button>
+
+  <div *ngIf="mobileOpen" id="mobile-nav" class="mt-2 w-48 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-2 shadow-lg">
+    <nav class="flex flex-col gap-1">
+      @for (section of sections; track section){
+      <a (click)="onLinkClick($event, section.id)" [href]="'#' + section.id" class="block rounded px-3 py-2 text-sm text-[var(--fg)] hover:bg-[#0F1720]/60">• {{ section.label }}</a>
+      }
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+/* Floating animation and photo sizing for hero component */
+
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.photo-float {
+  animation: floatY 4s ease-in-out infinite;
+  will-change: transform;
+  transition: transform 250ms ease;
+}
+
+.photo-float:hover {
+  transform: translateY(-14px) scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-float {
+    animation: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,21 @@
+<div
+  class="loading-spinner"
+  role="status"
+  aria-live="polite"
+  [attr.aria-label]="label"
+>
+  <svg
+    class="loading-spinner__icon"
+    [style.width.px]="size"
+    [style.height.px]="size"
+    viewBox="0 0 48 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+  </svg>
+
+  @if (showLabel) {
+    <span class="loading-spinner__label">{{ label }}</span>
+  }
+</div>

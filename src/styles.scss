@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss";
+
+:root {
+  --bg: #f8fafc; /* light background */
+  --fg: #0a0e14; /* light foreground */
+}
+
+.dark {
+  --bg: #071124;
+  --fg: #e7edf5;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
