@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
+import { TranslatePipe } from '../../translate.pipe';
+import { CommonModule } from '@angular/common';
+import { TranslateService } from '../../translate.service';
+import { LoadingSpinner } from '../../loading-spinner/loading-spinner';
 
 type TimelineCategory = 'experience' | 'education';
 
@@ -15,71 +19,123 @@ interface TimelineItem {
 
 @Component({
   selector: 'app-timeline-component',
-  imports: [],
+  imports: [CommonModule, TranslatePipe, LoadingSpinner],
   standalone: true,
   templateUrl: './timeline-component.html',
   styleUrl: './timeline-component.scss',
 })
 
 export class TimelineComponent {
+  private translateService = inject(TranslateService);
+  readonly language = this.translateService.language;
+  readonly educationLoading = signal(false);
+  readonly itemLoading = signal<Record<string, boolean>>({});
+  readonly showAllEducation = signal(false);
+  readonly visibleEducationItems = computed(() =>
+    this.showAllEducation()
+      ? this.educationItems
+      : this.educationItems.slice(0, 2),
+  );
+
+  private getItemKey(item: TimelineItem): string {
+    return item.title;
+  }
+
+  isItemLoading(item: TimelineItem): boolean {
+    return this.itemLoading()[this.getItemKey(item)] === true;
+  }
+
+  toggleEducation(): void {
+    if (this.educationLoading()) {
+      return;
+    }
+
+    const currentlyVisible = this.visibleEducationItems();
+    const nextVisible = this.showAllEducation()
+      ? this.educationItems.slice(0, 2)
+      : this.educationItems;
+
+    const newlyVisible = nextVisible.filter(
+      item => !currentlyVisible.some(current => current.title === item.title),
+    );
+
+    this.itemLoading.update(current => ({
+      ...current,
+      ...newlyVisible.reduce<Record<string, boolean>>((acc, item) => {
+        acc[this.getItemKey(item)] = true;
+        return acc;
+      }, {}),
+    }));
+
+    this.educationLoading.set(true);
+    setTimeout(() => {
+      this.showAllEducation.update(value => !value);
+      this.educationLoading.set(false);
+
+      newlyVisible.forEach((item, index) => {
+        const key = this.getItemKey(item);
+        setTimeout(() => {
+          this.itemLoading.update(current => ({
+            ...current,
+            [key]: false,
+          }));
+        }, 120 + index * 70);
+      });
+    }, 220);
+  }
+  
   readonly timelineItems: TimelineItem[] = [
     {
-      title: 'Junior Engineer',
-      organization: 'Netcompany - Intrasoft',
-      period: 'October 2024 - Present',
-      location: 'Patras, Greece',
-      description:
-        'Currently working as a Junior Engineer, contributing to software development projects and strengthening my professional experience in a real-world engineering environment.',
+      title: 'timeline.items.juniorEngineer.title',
+      organization: 'timeline.items.juniorEngineer.organization',
+      period: 'timeline.items.juniorEngineer.period',
+      location: 'timeline.items.juniorEngineer.location',
+      description: 'timeline.items.juniorEngineer.description',
       category: 'experience',
       icon: 'work',
       current: true,
     },
     {
-      title: 'Front-End Development Intern',
-      organization: 'Netcompany - Intrasoft',
-      period: 'June 2024 - October 2024',
-      location: 'Athens, Greece',
-      description:
-        'Completed my university internship with a primary focus on Front-End Development, gaining practical experience in modern web technologies and professional development workflows.',
+      title: 'timeline.items.frontendIntern.title',
+      organization: 'timeline.items.frontendIntern.organization',
+      period: 'timeline.items.frontendIntern.period',
+      location: 'timeline.items.frontendIntern.location',
+      description: 'timeline.items.frontendIntern.description',
       category: 'experience',
       icon: 'code',
     },
     {
-      title: 'BSc in Informatics and Telecommunications',
-      organization: 'University of the Peloponnese',
-      period: 'December 2019 - February 2025',
-      location: 'Tripoli, Greece',
-      description:
-        'Graduated from the Department of Informatics and Telecommunications, building a strong foundation in software development, computer networks, databases and information systems.',
+      title: 'timeline.items.bsc.title',
+      organization: 'timeline.items.bsc.organization',
+      period: 'timeline.items.bsc.period',
+      location: 'timeline.items.bsc.location',
+      description: 'timeline.items.bsc.description',
       category: 'education',
       icon: 'school',
     },
     {
-      title: 'Certificate of Information Security Administrator',
-      organization: 'Foresight',
-      period: 'April 2023',
-      location: 'Tripoli, Greece',
-      description:
-        'Attended this seminar in the context of the Systems Security university course, focusing on information security administration and security practices.',
+      title: 'timeline.items.securityCertificate.title',
+      organization: 'timeline.items.securityCertificate.organization',
+      period: 'timeline.items.securityCertificate.period',
+      location: 'timeline.items.securityCertificate.location',
+      description: 'timeline.items.securityCertificate.description',
       category: 'education',
       icon: 'security',
     },
     {
-      title: 'High School Diploma',
-      period: 'July 2019',
-      location: 'Aigio, Greece',
-      description:
-        'Successfully completed secondary education and received my High School Diploma.',
+      title: 'timeline.items.highSchoolDiploma.title',
+      period: 'timeline.items.highSchoolDiploma.period',
+      location: 'timeline.items.highSchoolDiploma.location',
+      description: 'timeline.items.highSchoolDiploma.description',
       category: 'education',
       icon: 'workspace_premium',
     },
     {
-      title: 'Certificate of English Language Proficiency – B2',
-      organization: 'Michigan ECCE',
-      period: 'May 2016',
-      location: 'Aigio, Greece',
-      description:
-        'Awarded the Examination for the Certificate of Competency in English at B2 level.',
+      title: 'timeline.items.englishCertificate.title',
+      organization: 'timeline.items.englishCertificate.organization',
+      period: 'timeline.items.englishCertificate.period',
+      location: 'timeline.items.englishCertificate.location',
+      description: 'timeline.items.englishCertificate.description',
       category: 'education',
       icon: 'language',
     },

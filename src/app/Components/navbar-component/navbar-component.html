@@ -3,7 +3,7 @@
   (pointerdown)="startDrag($event)"
   [class.at-projects]="activeId() === 'projects'"
   class="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur lg:block"
-  aria-label="Πλοήγηση σελίδας"
+  aria-label="{{ 'navbar.ariaLabel' | translate }}"
 >
   <div class="relative flex flex-col items-center gap-2 md:gap-8">
     <div
@@ -42,13 +42,34 @@
            bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2]
            opacity-0 shadow-lg transition-all duration-200 ease-out
            group-hover:translate-x-0 group-hover:opacity-100"
-    [class.translate-x-0]="activeId() === section.id"
-    [class.opacity-100]="activeId() === section.id"
   >
-    {{ section.label }}
+    {{ section.label | translate }}
   </span>
 </a>
     }
+
+    <div class="lg:hidden mt-4 flex flex-col items-center gap-2 rounded-3xl border border-[#334155] bg-[#0A0E14]/80 px-3 py-3 text-xs text-[#CFE9F2]">
+      <button
+        type="button"
+        (click)="setLanguage('en')"
+        [class.bg-[#5FD4F0]]="language() === 'en'"
+        [class.text-[#071118]]="language() === 'en'"
+        [class.text-[#CFE9F2]]="language() !== 'en'"
+        class="rounded-full px-3 py-1 transition duration-200"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        (click)="setLanguage('el')"
+        [class.bg-[#5FD4F0]]="language() === 'el'"
+        [class.text-[#071118]]="language() === 'el'"
+        [class.text-[#CFE9F2]]="language() !== 'el'"
+        class="rounded-full px-3 py-1 transition duration-200"
+      >
+        EL
+      </button>
+    </div>
   </div>
 </nav>
 
@@ -63,10 +84,33 @@
     <span *ngIf="mobileOpen">✕</span>
   </button>
 
-  <div *ngIf="mobileOpen" id="mobile-nav" class="mt-2 w-48 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-2 shadow-lg">
+  <div *ngIf="mobileOpen" id="mobile-nav" class="mt-2 w-52 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg">
+    <div class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[#334155] bg-[#0A0E14]/80 p-2 text-sm text-[#CFE9F2]">
+      <button
+        type="button"
+        (click)="setLanguage('en')"
+        [class.bg-[#5FD4F0]]="language() === 'en'"
+        [class.text-[#071118]]="language() === 'en'"
+        [class.text-[#CFE9F2]]="language() !== 'en'"
+        class="rounded-full px-3 py-1 transition duration-200"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        (click)="setLanguage('el')"
+        [class.bg-[#5FD4F0]]="language() === 'el'"
+        [class.text-[#071118]]="language() === 'el'"
+        [class.text-[#CFE9F2]]="language() !== 'el'"
+        class="rounded-full px-3 py-1 transition duration-200"
+      >
+        EL
+      </button>
+    </div>
+
     <nav class="flex flex-col gap-1">
       @for (section of sections; track section){
-      <a (click)="onLinkClick($event, section.id)" [href]="'#' + section.id" class="block rounded px-3 py-2 text-sm text-[var(--fg)] hover:bg-[#0F1720]/60">• {{ section.label }}</a>
+      <a (click)="onLinkClick($event, section.id)" [href]="'#' + section.id" class="block rounded px-3 py-2 text-sm text-[var(--fg)] hover:bg-[#0F1720]/60">• {{ section.label | translate }}</a>
       }
     </nav>
   </div>

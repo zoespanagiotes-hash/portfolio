@@ -7,13 +7,114 @@
            lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-20"
   >
     <!-- Profile card -->
-    <div class="relative mx-auto w-full max-w-md">
+    <div class="relative hidden lg:flex flex-1 justify-center mt-10">
+        <ng-template [ngTemplateOutlet]="profileCard"></ng-template>
+    </div>
+
+    <!-- About content -->
+    <div class="relative">
+      <p
+        class="text-sm font-semibold uppercase tracking-[0.3em]
+               text-[#5FD4F0]"
+      >
+        {{ 'about.header' | translate }}
+      </p>
+
+      <div class="relative lg:hidden flex flex-1 justify-center mt-10">
+        <ng-template [ngTemplateOutlet]="profileCard"></ng-template>
+      </div>
+
+      <h2
+        class="mt-4 text-3xl font-bold leading-tight text-[gray-200]
+               md:text-4xl xl:text-5xl"
+      >
+        {{ 'about.title' | translate }}
+      </h2>
+
+      <div class="mt-7 space-y-5 text-base leading-8 text-[#94A3B8]">
+        <p>{{ 'about.paragraph1' | translate }}</p>
+        <p>{{ 'about.paragraph2' | translate }}</p>
+        <p>{{ 'about.paragraph3' | translate }}</p>
+      </div>
+
+      <!-- Highlights -->
+      <div class="mt-10 grid gap-4 sm:grid-cols-3">
+        <div
+          class="rounded-2xl border border-[#334155]
+                 bg-[#0F172A]/70 p-5
+                 transition duration-300
+                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
+        >
+          <span
+            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
+          >
+            school
+          </span>
+
+          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
+            {{ 'about.cards.education.title' | translate }}
+          </h3>
+
+          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
+            {{ 'about.cards.education.description' | translate }}
+          </p>
+        </div>
+
+        <div
+          class="rounded-2xl border border-[#334155]
+                 bg-[#0F172A]/70 p-5
+                 transition duration-300
+                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
+        >
+          <span
+            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
+          >
+            code
+          </span>
+
+          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
+            {{ 'about.cards.development.title' | translate }}
+          </h3>
+
+          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
+            {{ 'about.cards.development.description' | translate }}
+          </p>
+        </div>
+
+        <div
+          class="rounded-2xl border border-[#334155]
+                 bg-[#0F172A]/70 p-5
+                 transition duration-300
+                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
+        >
+          <span
+            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
+          >
+            lightbulb
+          </span>
+
+          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
+            {{ 'about.cards.mindset.title' | translate }}
+          </h3>
+
+          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
+            {{ 'about.cards.mindset.description' | translate }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #profileCard>    
+  <div class="relative mx-auto w-full max-w-md">
       <!-- Decorative glow -->
       <div
         aria-hidden="true"
         class="absolute -inset-6 rounded-[2.5rem]
                bg-[#5FD4F0]/10 blur-3xl"
-      ></div>
+      >
+      </div>
 
       <article
         class="group relative overflow-hidden rounded-3xl
@@ -39,7 +140,7 @@
 
           <img
             src="assets/images/profile.jpg"
-            alt="Panagiotis Zois"
+            alt="{{ 'about.imageAlt' | translate }}"
             class="relative h-40 w-40 rounded-full
                    border-4 border-[#5FD4F0]/30
                    object-cover shadow-xl
@@ -50,7 +151,7 @@
           <span
             class="absolute bottom-3 right-2 h-5 w-5 rounded-full
                    border-4 border-[#0B1220] bg-emerald-400"
-            aria-label="Available"
+            aria-label="{{ 'hero.badgeAvailable' | translate }}"
           ></span>
         </div>
 
@@ -61,7 +162,7 @@
           </h2>
 
           <p class="mt-2 text-sm font-medium text-[#5FD4F0]">
-            Front-end Developer
+            Software Engineer | Full Stack Developer
           </p>
         </div>
 
@@ -109,109 +210,4 @@
         </div>
       </article>
     </div>
-
-    <!-- About content -->
-    <div class="relative">
-      <p
-        class="text-sm font-semibold uppercase tracking-[0.3em]
-               text-[#5FD4F0]"
-      >
-        Get to know me
-      </p>
-
-      <h2
-        class="mt-4 text-3xl font-bold leading-tight text-[var(--fg)]
-               md:text-4xl xl:text-5xl"
-      >
-        Building clean and meaningful digital experiences
-      </h2>
-
-      <div class="mt-7 space-y-5 text-base leading-8 text-[#94A3B8]">
-        <p>
-          I am a motivated and dedicated professional with a solid
-          background in Information Technology and Telecommunications,
-          having recently completed my studies at the University of
-          Peloponnese.
-        </p>
-
-        <p>
-          Beyond my academic experience, I have contributed to a variety
-          of projects that allowed me to strengthen my technical skills
-          and apply my knowledge in practical, real-world environments.
-        </p>
-
-        <p>
-          My main focus is front-end development, where I enjoy building
-          responsive, accessible and visually refined interfaces using
-          modern technologies such as Angular, TypeScript and Tailwind CSS.
-        </p>
-      </div>
-
-      <!-- Highlights -->
-      <div class="mt-10 grid gap-4 sm:grid-cols-3">
-        <div
-          class="rounded-2xl border border-[#334155]
-                 bg-[#0F172A]/70 p-5
-                 transition duration-300
-                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
-        >
-          <span
-            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
-          >
-            school
-          </span>
-
-          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
-            Education
-          </h3>
-
-          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
-            University of Peloponnese graduate.
-          </p>
-        </div>
-
-        <div
-          class="rounded-2xl border border-[#334155]
-                 bg-[#0F172A]/70 p-5
-                 transition duration-300
-                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
-        >
-          <span
-            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
-          >
-            code
-          </span>
-
-          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
-            Development
-          </h3>
-
-          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
-            Focused on modern front-end technologies.
-          </p>
-        </div>
-
-        <div
-          class="rounded-2xl border border-[#334155]
-                 bg-[#0F172A]/70 p-5
-                 transition duration-300
-                 hover:-translate-y-1 hover:border-[#5FD4F0]/60"
-        >
-          <span
-            class="material-symbols-outlined text-3xl text-[#5FD4F0]"
-          >
-            lightbulb
-          </span>
-
-          <h3 class="mt-4 font-semibold text-[#E2E8F0]">
-            Mindset
-          </h3>
-
-          <p class="mt-2 text-sm leading-6 text-[#94A3B8]">
-            Always learning and improving.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </ng-template>

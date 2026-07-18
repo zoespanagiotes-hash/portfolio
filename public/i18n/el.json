@@ -1,0 +1,189 @@
+{
+  "navbar": {
+    "ariaLabel": "Πλοήγηση σελίδας",
+    "openMenu": "Άνοιγμα πλοήγησης",
+    "sections": {
+      "home": "Αρχική",
+      "about": "Σχετικά",
+      "my-journey": "Το ταξίδι μου",
+      "skills": "Δεξιότητες",
+      "contact": "Επικοινωνία"
+    }
+  },
+  "hero": {
+    "devLog": "// dev.log — {role}",
+    "heading": {
+        "start": "Μετατρέπω τον καφέ σε κώδικα",
+        "highlight": "και τον κώδικα σε λύσεις"
+    },
+    "tagline": "Μετατρέπω τον καφέ σε κώδικα, και τον κώδικα σε λύσεις.",
+    "description": "Είμαι {name}, {role}. Χτίζω γρήγορα, καθαρά interfaces — από το πρώτο commit μέχρι το production.",
+    "projectsButton": "Δες τα Projects",
+    "projectsComingSoon": "Θα είναι σύντομα διαθέσιμο",
+    "cvButton": "Κατέβασε CV",
+    "availability": "Διαθέσιμος για νέα projects",
+    "techLabel": "Τεχνολογίες",
+    "badgeAvailable": "Διαθέσιμος",
+    "imageAltSuffix": ", μπροστά από τις οθόνες",
+    "commands": {
+      "build": "code --build",
+      "solve": "code --solve",
+      "repeat": "code --repeat"
+    }
+  },
+  "about": {
+    "header": "Γνώρισε με",
+    "title": "Κατασκευάζοντας καθαρές και ουσιαστικές ψηφιακές εμπειρίες",
+    "paragraph1": "Είμαι ένας αφοσιωμένος επαγγελματίας με ισχυρή βάση στην Πληροφορική και τις Τηλεπικοινωνίες, ο οποίος ολοκλήρωσε πρόσφατα τις σπουδές του στο Πανεπιστήμιο Πελοποννήσου.",
+    "paragraph2": "Πέρα από την ακαδημαϊκή μου εμπειρία, έχω συμβάλει σε διάφορα projects που μου επέτρεψαν να ενισχύσω τις τεχνικές μου δεξιότητες και να εφαρμόσω τις γνώσεις μου σε πρακτικά, πραγματικά περιβάλλοντα.",
+    "paragraph3": "Κύρια εστίασή μου είναι η ανάπτυξη front-end, όπου απολαμβάνω να χτίζω responsive, προσβάσιμα και οπτικά καλαίσθητα interfaces χρησιμοποιώντας σύγχρονες τεχνολογίες όπως Angular, TypeScript και Tailwind CSS.",
+    "cards": {
+      "education": {
+        "title": "Εκπαίδευση",
+        "description": "Πτυχιούχος Πανεπιστημίου Πελοποννήσου."
+      },
+      "development": {
+        "title": "Ανάπτυξη",
+        "description": "Επικεντρωμένος σε σύγχρονες τεχνολογίες front-end."
+      },
+      "mindset": {
+        "title": "Νοοτροπία",
+        "description": "Συνεχής μάθηση και βελτίωση."
+      }
+    }
+  },
+  "skills": {
+    "verticalLabel": "Η εξειδίκευσή μου",
+    "header": "Δεξιότητες & Υπηρεσίες",
+    "title": "Ανακάλυψε τις Ειδικότητές μου & το Tech Stack",
+    "description": "Ανακάλυψε τις τεχνολογίες, τα εργαλεία ανάπτυξης και τις ψηφιακές υπηρεσίες που χρησιμοποιώ για να δημιουργώ σύγχρονες, responsive και συντηρήσιμες εφαρμογές.",
+    "ariaLabel": "Κατηγορίες εξειδίκευσης",
+    "tabs": {
+      "skills": "Δεξιότητες",
+      "tools": "Εργαλεία",
+      "services": "Υπηρεσίες"
+    },
+    "aria": {
+      "showSkills": "Δείξε δεξιότητες",
+      "showTools": "Δείξε εργαλεία",
+      "showServices": "Δείξε υπηρεσίες"
+    },
+    "tech": {
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "javascript": "JavaScript",
+      "html": "HTML",
+      "css": "CSS",
+      "tailwind": "Tailwind CSS"
+    },
+    "tools": {
+      "git": "Git",
+      "github": "GitHub",
+      "vscode": "VS Code",
+      "postman": "Postman",
+      "figma": "Figma",
+      "npm": "npm"
+    },
+    "services": {
+      "webDevelopment": {
+        "title": "Ανάπτυξη Ιστοσελίδων",
+        "description": "Σχεδιάζοντας responsive και ευχάριστες ιστοσελίδες με σύγχρονες τεχνολογίες front-end."
+      },
+      "uiuxDesign": {
+        "title": "UI/UX Design",
+        "description": "Δημιουργώντας οπτικά ελκυστικά και φιλικά προς τον χρήστη interfaces."
+      },
+      "customCms": {
+        "title": "Προσαρμοσμένες λύσεις CMS",
+        "description": "Κατασκευάζοντας αποτελεσματικές λύσεις διαχείρισης περιεχομένου για επεκτάσιμες ιστοσελίδες."
+      },
+      "mobileApp": {
+        "title": "Ανάπτυξη Mobile Εφαρμογών",
+        "description": "Σχεδιάζοντας responsive και φιλικές προς το χρήστη διεπαφές εφαρμογών."
+      },
+      "ecommerce": {
+        "title": "Ανάπτυξη E-commerce",
+        "description": "Δημιουργώντας σύγχρονα και αξιόπιστα ηλεκτρονικά καταστήματα."
+      },
+      "apiIntegration": {
+        "title": "Ενοποίηση API",
+        "description": "Συνδέοντας εφαρμογές με εξωτερικές υπηρεσίες και APIs."
+      }
+    }
+  },
+  "timeline": {
+    "headerLabel": "Το ταξίδι μου",
+    "headerTitle": "Εμπειρία & Εκπαίδευση",
+    "description": "Χρονολόγιο της επαγγελματικής μου εμπειρίας, ακαδημαϊκού υπόβαθρου και πιστοποιήσεων.",
+    "sections": {
+      "career": "Καριέρα",
+      "learning": "Μάθηση"
+    },
+    "titles": {
+      "jobExperience": "Εργασιακή Εμπειρία",
+      "education": "Εκπαίδευση"
+    },
+    "current": "Τρέχον",
+    "viewMore": "Δείξε περισσότερα",
+    "viewLess": "Δείξε λιγότερα",
+    "items": {
+      "juniorEngineer": {
+        "title": "Junior Μηχανικός",
+        "organization": "Netcompany - Intrasoft",
+        "period": "October 2024 - Present",
+        "location": "Patras, Greece",
+        "description": "Εργάζομαι ως Junior Μηχανικός, συμβάλλοντας σε έργα λογισμικού και ενισχύοντας την επαγγελματική μου εμπειρία σε πραγματικό περιβάλλον."
+      },
+      "frontendIntern": {
+        "title": "Πρακτική Άσκηση Front-End Development",
+        "organization": "Netcompany - Intrasoft",
+        "period": "June 2024 - October 2024",
+        "location": "Athens, Greece",
+        "description": "Ολοκλήρωσα την πρακτική μου άσκηση με κύρια έμφαση στην Front-End ανάπτυξη, αποκτώντας πρακτική εμπειρία σε σύγχρονες τεχνολογίες web και επαγγελματικές ροές εργασίας."
+      },
+      "bsc": {
+        "title": "Πτυχίο στην Πληροφορική και Τηλεπικοινωνίες",
+        "organization": "University of the Peloponnese",
+        "period": "December 2019 - February 2025",
+        "location": "Tripoli, Greece",
+        "description": "Αποφοίτησα από το Τμήμα Πληροφορικής και Τηλεπικοινωνιών, αποκτώντας ισχυρή βάση στην ανάπτυξη λογισμικού, τα δίκτυα υπολογιστών, τις βάσεις δεδομένων και τα πληροφοριακά συστήματα."
+      },
+      "securityCertificate": {
+        "title": "Πιστοποιητικό Διαχειριστή Ασφάλειας Πληροφοριών",
+        "organization": "Foresight",
+        "period": "April 2023",
+        "location": "Tripoli, Greece",
+        "description": "Παρακολούθησα αυτό το σεμινάριο στα πλαίσια του πανεπιστημιακού μαθήματος Systems Security, εστιάζοντας στη διαχείριση ασφάλειας πληροφοριών και στις πρακτικές ασφάλειας."
+      },
+      "highSchoolDiploma": {
+        "title": "Απολυτήριο Λυκείου",
+        "period": "July 2019",
+        "location": "Aigio, Greece",
+        "description": "Ολοκλήρωσα με επιτυχία τη δευτεροβάθμια εκπαίδευση και έλαβα το Απολυτήριο Λυκείου μου."
+      },
+      "englishCertificate": {
+        "title": "Πιστοποιητικό Γλωσσικής Επάρκειας Αγγλικών – B2",
+        "organization": "Michigan ECCE",
+        "period": "May 2016",
+        "location": "Aigio, Greece",
+        "description": "Απέκτησα το Πιστοποιητικό Επάρκειας στην Αγγλική Γλώσσα επιπέδου B2."
+      }
+    }
+  },
+  "footer": {
+    "contactLabel": "Επικοινωνία",
+    "title": "Έχεις κάποια ιδέα ή πρόταση συνεργασίας;",
+    "description": "Είμαι διαθέσιμος για νέες ευκαιρίες, ενδιαφέροντα projects και συνεργασίες. Στείλε μου ένα μήνυμα και θα επικοινωνήσω μαζί σου.",
+    "emailButton": "Στείλε μου email",
+    "socialPrompt": "Μπορείς επίσης να με βρεις εδώ",
+    "copyright": "©",
+    "copyrightText": "©",
+    "backToTop": "Επιστροφή στην κορυφή",
+    "aria": {
+      "backToTop": "Επιστροφή στην κορυφή"
+    }
+  },
+  "certifications": {
+    "works": "certifications works!"
+  }
+}

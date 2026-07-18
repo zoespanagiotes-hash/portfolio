@@ -8,8 +8,11 @@ import {
   ChangeDetectorRef,
   ViewChild,
   ElementRef,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TranslatePipe } from '../../translate.pipe';
+import { TranslateService } from '../../translate.service';
 
 export interface NavSection {
   id: string;
@@ -20,12 +23,17 @@ export interface NavSection {
 @Component({
   selector: 'app-navbar-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './navbar-component.html',
   styleUrl: './navbar-component.scss',
 })
 export class NavbarComponent implements AfterViewInit, OnDestroy{
+  private translateService = inject(TranslateService);
+  private cdr = inject(ChangeDetectorRef);
+
+  readonly language = this.translateService.language;
+
   mobileOpen = false;
   mobileBurgerVisible = false; // becomes true when user scrolls on small screens
   private lastScroll = 0;
@@ -39,13 +47,12 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
 
   @ViewChild('desktopNav', { static: true }) desktopNav!: ElementRef<HTMLElement>;
 
-  constructor(private cdr: ChangeDetectorRef) {}
   @Input() sections: NavSection[] = [
-      { id: 'home', label: 'Αρχική', icon: 'home' },
-      { id: 'about', label: 'Σχετικά', icon: 'info' },
-      { id: 'projects', label: 'Projects', icon: 'work' },
-      { id: 'skills', label: 'Δεξιότητες', icon: 'star' },
-      { id: 'contact', label: 'Επικοινωνία', icon: 'email' },
+      { id: 'home', label: 'navbar.sections.home', icon: 'home' },
+      { id: 'about', label: 'navbar.sections.about', icon: 'info' },
+      { id: 'skills', label: 'navbar.sections.skills', icon: 'star' },
+      { id: 'my-journey', label: 'navbar.sections.myJourney', icon: 'work' },
+      { id: 'contact', label: 'navbar.sections.contact', icon: 'email' },
   ];
  
   readonly activeId = signal<string>('');
@@ -169,6 +176,12 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
     this.dragging = false;
     window.removeEventListener('pointermove', this.pointerMoveHandler);
     window.removeEventListener('pointerup', this.pointerUpHandler);
+  }
+
+  setLanguage(lang: 'en' | 'el'): void {
+    void this.translateService.setLanguage(lang).then(() => {
+      this.cdr.markForCheck();
+    });
   }
  
   onLinkClick(event: Event, id: string): void {

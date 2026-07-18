@@ -1,0 +1,189 @@
+{
+  "navbar": {
+    "ariaLabel": "Page navigation",
+    "openMenu": "Open navigation",
+    "sections": {
+      "home": "Home",
+      "about": "About",
+      "my-journey": "My Journey",
+      "skills": "Skills",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "devLog": "// dev.log — {role}",
+    "heading": {
+      "start": "Code with purpose. Design with passion.",
+      "highlight": "Solutions with impact."
+    },
+    "tagline": "I turn coffee into code, and code into solutions.",
+    "description": "I am {name}, {role}. I build fast, clean interfaces — from first commit to production.",
+    "projectsButton": "See Projects",
+    "projectsComingSoon": "Coming soon",
+    "cvButton": "Download CV",
+    "availability": "Available for new projects",
+    "techLabel": "Technologies",
+    "badgeAvailable": "Available",
+    "imageAltSuffix": ", in front of the screens",
+    "commands": {
+      "build": "code --build",
+      "solve": "code --solve",
+      "repeat": "code --repeat"
+    }
+  },
+  "about": {
+    "header": "Get to know me",
+    "title": "Building clean and meaningful digital experiences",
+    "paragraph1": "I am a motivated and dedicated professional with a solid background in Information Technology and Telecommunications, having recently completed my studies at the University of Peloponnese.",
+    "paragraph2": "Beyond my academic experience, I have contributed to a variety of projects that allowed me to strengthen my technical skills and apply my knowledge in practical, real-world environments.",
+    "paragraph3": "My main focus is front-end development, where I enjoy building responsive, accessible and visually refined interfaces using modern technologies such as Angular, TypeScript and Tailwind CSS.",
+    "cards": {
+      "education": {
+        "title": "Education",
+        "description": "University of Peloponnese graduate."
+      },
+      "development": {
+        "title": "Development",
+        "description": "Focused on modern front-end technologies."
+      },
+      "mindset": {
+        "title": "Mindset",
+        "description": "Always learning and improving."
+      }
+    }
+  },
+  "skills": {
+    "verticalLabel": "My Expertise",
+    "header": "Skills & Services",
+    "title": "Explore My Expertise & Tech Stack",
+    "description": "Explore the technologies, development tools and digital services that I use to create modern, responsive and maintainable applications.",
+    "ariaLabel": "Expertise categories",
+    "tabs": {
+      "skills": "Skills",
+      "tools": "Tools",
+      "services": "Services"
+    },
+    "aria": {
+      "showSkills": "Show skills",
+      "showTools": "Show tools",
+      "showServices": "Show services"
+    },
+    "tech": {
+      "angular": "Angular",
+      "typescript": "TypeScript",
+      "javascript": "JavaScript",
+      "html": "HTML",
+      "css": "CSS",
+      "tailwind": "Tailwind CSS"
+    },
+    "tools": {
+      "git": "Git",
+      "github": "GitHub",
+      "vscode": "VS Code",
+      "postman": "Postman",
+      "figma": "Figma",
+      "npm": "npm"
+    },
+    "services": {
+      "webDevelopment": {
+        "title": "Web Development",
+        "description": "Crafting responsive and intuitive websites using modern front-end technologies."
+      },
+      "uiuxDesign": {
+        "title": "UI/UX Design",
+        "description": "Creating visually appealing and user-focused interfaces."
+      },
+      "customCms": {
+        "title": "Custom CMS Solutions",
+        "description": "Building efficient content management solutions for scalable websites."
+      },
+      "mobileApp": {
+        "title": "Mobile App Development",
+        "description": "Designing responsive and user-friendly mobile application interfaces."
+      },
+      "ecommerce": {
+        "title": "E-commerce Development",
+        "description": "Creating modern and reliable online storefronts."
+      },
+      "apiIntegration": {
+        "title": "API Integration",
+        "description": "Connecting applications with external services and APIs."
+      }
+    }
+  },
+  "timeline": {
+    "headerLabel": "My journey",
+    "headerTitle": "Experience & Education",
+    "description": "A timeline of my professional experience, academic background and certifications.",
+    "sections": {
+      "career": "Career",
+      "learning": "Learning"
+    },
+    "titles": {
+      "jobExperience": "Job Experience",
+      "education": "Education"
+    },
+    "current": "Current",
+    "viewMore": "View more",
+    "viewLess": "View less",
+    "items": {
+      "juniorEngineer": {
+        "title": "Junior Engineer",
+        "organization": "Netcompany - Intrasoft",
+        "period": "October 2024 - Present",
+        "location": "Patras, Greece",
+        "description": "Currently working as a Junior Engineer, contributing to software development projects and strengthening my professional experience in a real-world engineering environment."
+      },
+      "frontendIntern": {
+        "title": "Front-End Development Intern",
+        "organization": "Netcompany - Intrasoft",
+        "period": "June 2024 - October 2024",
+        "location": "Athens, Greece",
+        "description": "Completed my university internship with a primary focus on Front-End Development, gaining practical experience in modern web technologies and professional development workflows."
+      },
+      "bsc": {
+        "title": "BSc in Informatics and Telecommunications",
+        "organization": "University of the Peloponnese",
+        "period": "December 2019 - February 2025",
+        "location": "Tripoli, Greece",
+        "description": "Graduated from the Department of Informatics and Telecommunications, building a strong foundation in software development, computer networks, databases and information systems."
+      },
+      "securityCertificate": {
+        "title": "Certificate of Information Security Administrator",
+        "organization": "Foresight",
+        "period": "April 2023",
+        "location": "Tripoli, Greece",
+        "description": "Attended this seminar in the context of the Systems Security university course, focusing on information security administration and security practices."
+      },
+      "highSchoolDiploma": {
+        "title": "High School Diploma",
+        "period": "July 2019",
+        "location": "Aigio, Greece",
+        "description": "Successfully completed secondary education and received my High School Diploma."
+      },
+      "englishCertificate": {
+        "title": "Certificate of English Language Proficiency – B2",
+        "organization": "Michigan ECCE",
+        "period": "May 2016",
+        "location": "Aigio, Greece",
+        "description": "Awarded the Examination for the Certificate of Competency in English at B2 level."
+      }
+    }
+  },
+  "footer": {
+    "contactLabel": "Contact",
+    "title": "Do you have an idea or collaboration proposal?",
+    "description": "I am available for new opportunities, interesting projects and collaborations. Send me a message and I will get in touch with you.",
+    "emailButton": "Send me an email",
+    "socialPrompt": "You can also find me here",
+    "copyright": "©",
+    "copyrightText": "Portfolio. All rights reserved.",
+    "backToTop": "Back to top",
+    "aria": {
+      "backToTop": "Back to top"
+    }
+  },
+  "certifications": {
+    "works": "certifications works!"
+  }
+}

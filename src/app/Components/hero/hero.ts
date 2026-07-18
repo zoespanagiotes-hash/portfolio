@@ -5,24 +5,30 @@ import {
   signal,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../theme.service';
+import { TranslatePipe } from '../../translate.pipe';
+import { TranslateService } from '../../translate.service';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero.html',
   styleUrls: ['./hero.scss','./hero-float.scss'],
 })
 
 export class HeroComponent implements OnInit, OnDestroy {
-  constructor(private theme: ThemeService, private cdr: ChangeDetectorRef) {}
+  private translateService= inject(TranslateService);
+  private theme= inject(ThemeService);
+  private cdr= inject(ChangeDetectorRef);
+
    // ---- Στοιχεία προφίλ — άλλαξέ τα με τα δικά σου ----
   readonly name = 'Το Όνομά Σου';
-  readonly role = 'Full-Stack Developer';
+  readonly role = 'Front-end Developer';
   readonly stack: string[] = ['Angular', 'TypeScript', 'Node.js', 'Tailwind'];
  
   // ---- Terminal typewriter ----
@@ -37,6 +43,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   readonly tiltTransform = signal(
     'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)'
   );
+  readonly language = this.translateService.language;
  
   private commandIndex = 0;
   private charIndex = 0;
@@ -50,6 +57,12 @@ export class HeroComponent implements OnInit, OnDestroy {
     this.cursorTimer = setInterval(() => {
       this.showCursorSolid.update((v) => !v);
     }, 500);
+  }
+
+  setLanguage(lang: 'en' | 'el'): void {
+    void this.translateService.setLanguage(lang).then(() => {
+      this.cdr.markForCheck();
+    });
   }
  
   ngOnDestroy(): void {

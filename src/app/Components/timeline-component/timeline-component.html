@@ -1,5 +1,5 @@
 <section
-  id="experience"
+  id="my-journey"
   class="bg-[var(--background-secondary-color)] px-6 py-20 text-white md:px-8 xl:px-20"
 >
   <div class="mx-auto w-full max-w-7xl">
@@ -9,19 +9,18 @@
         class="text-sm font-semibold uppercase tracking-[0.3em]
                text-[#5FD4F0]"
       >
-        My journey
+        {{ 'timeline.headerLabel' | translate }}
       </p>
 
       <h2
         class="mt-4 text-3xl font-bold leading-tight text-[var(--fg)]
                md:text-4xl xl:text-5xl"
       >
-        Experience &amp; Education
+        {{ 'timeline.headerTitle' | translate }}
       </h2>
 
       <p class="mt-5 text-base leading-7 text-[#94A3B8]">
-        A timeline of my professional experience, academic background and
-        certifications.
+        {{ 'timeline.description' | translate }}
       </p>
     </div>
 
@@ -44,11 +43,11 @@
               class="text-xs font-medium uppercase tracking-[0.25em]
                      text-[#5FD4F0]"
             >
-              Career
+              {{ 'timeline.sections.career' | translate }}
             </p>
 
             <h3 class="mt-1 text-2xl font-bold text-[#F8FAFC]">
-              Job Experience
+              {{ 'timeline.titles.jobExperience' | translate }}
             </h3>
           </div>
         </div>
@@ -102,7 +101,7 @@
                   <div>
                     <div class="flex flex-wrap items-center gap-3">
                       <h4 class="text-lg font-bold text-[#F8FAFC]">
-                        {{ item.title }}
+                        {{ item.title | translate }}
                       </h4>
 
                       @if (item.current) {
@@ -116,14 +115,14 @@
                             class="h-1.5 w-1.5 rounded-full bg-emerald-400"
                           ></span>
 
-                          Current
+                          {{ 'timeline.current' | translate }}
                         </span>
                       }
                     </div>
 
                     @if (item.organization) {
                       <p class="mt-1 font-medium text-[#5FD4F0]">
-                        {{ item.organization }}
+                        {{ item.organization | translate }}
                       </p>
                     }
                   </div>
@@ -134,7 +133,7 @@
                            bg-[#020617]/50 px-3 py-1.5
                            text-xs font-medium text-[#CBD5E1]"
                   >
-                    {{ item.period }}
+                    {{ item.period | translate }}
                   </span>
                 </div>
 
@@ -146,11 +145,11 @@
                     location_on
                   </span>
 
-                  {{ item.location }}
+                  {{ item.location | translate }}
                 </div>
 
                 <p class="mt-4 text-sm leading-7 text-[#94A3B8]">
-                  {{ item.description }}
+                  {{ item.description | translate }}
                 </p>
               </div>
             </article>
@@ -176,22 +175,21 @@
               class="text-xs font-medium uppercase tracking-[0.25em]
                      text-[#5FD4F0]"
             >
-              Learning
+              {{ 'timeline.sections.learning' | translate }}
             </p>
-
             <h3 class="mt-1 text-2xl font-bold text-[#F8FAFC]">
-              Education
+              {{ 'timeline.titles.education' | translate }}
             </h3>
           </div>
         </div>
 
         <div class="relative">
           @for (
-            item of educationItems;
+            item of visibleEducationItems();
             track item.title + item.period;
             let last = $last
           ) {
-            <article class="group relative flex gap-5">
+            <article class="group relative flex gap-5 timeline-education-card">
               <!-- Timeline column -->
               <div class="relative flex w-12 shrink-0 justify-center">
                 @if (!last) {
@@ -220,57 +218,81 @@
 
               <!-- Timeline card -->
               <div
-                class="mb-8 flex-1 rounded-3xl border border-[#334155]
+                class="mb-8 flex-1 min-h-[18rem] rounded-3xl border border-[#334155]
                        bg-gradient-to-br from-[#111827] to-[#0B1220]
                        p-6 transition-all duration-300
                        group-hover:-translate-y-1
                        group-hover:border-[#5FD4F0]/70
                        group-hover:shadow-[0_20px_50px_-30px_rgba(95,212,240,0.6)]"
               >
-                <div
-                  class="flex flex-col gap-4 sm:flex-row
-                         sm:items-start sm:justify-between"
-                >
-                  <div>
-                    <h4 class="text-lg font-bold text-[#F8FAFC]">
-                      {{ item.title }}
-                    </h4>
+                @if (isItemLoading(item)) {
+                  <div class="flex h-full min-h-[18rem] w-full items-center justify-center rounded-3xl border border-[#334155] bg-[#0F172A]/80 p-6">
+                    <app-loading-spinner [showLabel]="false" [size]="40"></app-loading-spinner>
+                  </div>
+                } @else {
+                  <div
+                    class="flex flex-col gap-4 sm:flex-row
+                           sm:items-start sm:justify-between"
+                  >
+                    <div>
+                      <h4 class="text-lg font-bold text-[#F8FAFC]">
+                        {{ item.title | translate }}
+                      </h4>
 
-                    @if (item.organization) {
-                      <p class="mt-1 font-medium text-[#5FD4F0]">
-                        {{ item.organization }}
-                      </p>
-                    }
+                      @if (item.organization) {
+                        <p class="mt-1 font-medium text-[#5FD4F0]">
+                          {{ item.organization | translate }}
+                        </p>
+                      }
+                    </div>
+
+                    <span
+                      class="w-fit shrink-0 rounded-full
+                             border border-[#334155]
+                             bg-[#020617]/50 px-3 py-1.5
+                             text-xs font-medium text-[#CBD5E1]"
+                    >
+                      {{ item.period | translate }}
+                    </span>
                   </div>
 
-                  <span
-                    class="w-fit shrink-0 rounded-full
-                           border border-[#334155]
-                           bg-[#020617]/50 px-3 py-1.5
-                           text-xs font-medium text-[#CBD5E1]"
+                  <div
+                    class="mt-4 flex items-center gap-2
+                           text-sm text-[#94A3B8]"
                   >
-                    {{ item.period }}
-                  </span>
-                </div>
+                    <span class="material-symbols-outlined text-lg">
+                      location_on
+                    </span>
 
-                <div
-                  class="mt-4 flex items-center gap-2
-                         text-sm text-[#94A3B8]"
-                >
-                  <span class="material-symbols-outlined text-lg">
-                    location_on
-                  </span>
+                    {{ item.location | translate }}
+                  </div>
 
-                  {{ item.location }}
-                </div>
-
-                <p class="mt-4 text-sm leading-7 text-[#94A3B8]">
-                  {{ item.description }}
-                </p>
+                  <p class="mt-4 text-sm leading-7 text-[#94A3B8]">
+                    {{ item.description | translate }}
+                  </p>
+                }
               </div>
             </article>
           }
         </div>
+
+        @if (educationItems.length > 2) {
+          <div class="flex justify-center">
+            <button
+              type="button"
+              (click)="toggleEducation()"
+              [attr.aria-expanded]="showAllEducation()"
+              class="mt-4 inline-flex items-center gap-2 rounded-full border border-[#5FD4F0]/40 bg-[#0F172A]/80 px-5 py-3 text-sm font-medium text-[#E7EDF5] transition duration-300 hover:border-[#5FD4F0] hover:text-[#5FD4F0] focus:outline-none focus:ring-0"
+            >
+              <span>
+                {{ showAllEducation() ? ('timeline.viewLess' | translate) : ('timeline.viewMore' | translate) }}
+              </span>
+              <span class="material-symbols-outlined text-base transition-transform duration-300" [class.rotate-180]="showAllEducation()">
+                expand_more
+              </span>
+            </button>
+          </div>
+        }
       </div>
     </div>
   </div>
