@@ -107,26 +107,6 @@
       <p class="mt-3 text-sm text-[#94A3B8]">
         {{ 'hero.projectsComingSoon' | translate }}
       </p>
-
-      <p class="mt-6 inline-flex items-center gap-2 font-mono text-xs text-[#7C8A9C]">
-        <span class="relative flex h-2 w-2">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#5FD4F0] opacity-60"
-          ></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-[#5FD4F0]"></span>
-        </span>
-        {{ 'hero.availability' | translate }}
-      </p>
-
-      <ul class="mt-11 flex flex-wrap gap-2" aria-label="{{ 'hero.techLabel' | translate }}">
-        @for (tech of stack; track tech) {
-          <li
-            class="rounded-full border border-[#1E2733] px-3 py-1 font-mono text-xs text-[#7C8A9C]"
-          >
-            {{ tech | translate }}
-          </li>
-        }
-      </ul>
     </div>
 
     <!-- ================= RIGHT: η φωτο σου, λιωμένη μέσα στο φόντο ================= -->
