@@ -37,7 +37,9 @@ jobs:
         run: npm run build -- --configuration production --base-href="/portfolio/"
 
       - name: Support Angular routes
-        run: cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+        run: |
+          cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+          touch dist/portfolio/browser/.nojekyll
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
