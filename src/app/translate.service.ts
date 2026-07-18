@@ -1,5 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 
+const DEFAULT_BASE_URL = '/';
+
 type Lang = 'en' | 'el';
 
 type TranslateParams = Record<string, string | number | boolean>;
@@ -26,7 +28,8 @@ export class TranslateService {
     }
 
     try {
-      const response = await fetch(`/i18n/${lang}.json`);
+      const baseUrl = this.getBaseUrl();
+      const response = await fetch(new URL(`i18n/${lang}.json`, baseUrl).toString());
       if (!response.ok) {
         throw new Error(`Failed to load translations: ${response.status}`);
       }
@@ -69,7 +72,18 @@ export class TranslateService {
 
     return this.interpolate(current, params);
   }
+  private getBaseUrl(): string {
+    if (typeof window === 'undefined') {
+      return DEFAULT_BASE_URL;
+    }
 
+    const baseTag = document.querySelector('base');
+    if (baseTag?.getAttribute('href')) {
+      return new URL(baseTag.getAttribute('href')!, window.location.href).toString();
+    }
+
+    return `${window.location.origin}${window.location.pathname.replace(/[^/]*$/, '')}`;
+  }
   private interpolate(value: string, params?: TranslateParams): string {
     if (!params) {
       return value;
