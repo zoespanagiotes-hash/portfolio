@@ -2,37 +2,47 @@
   id="skills"
   class="bg-[var(--background-secondary-color)] px-6 py-4 lg:py-16 text-white md:px-8 md:py-20 xl:px-20"
 >
-  <div
-    class="mx-auto flex w-full max-w-7xl flex-col justify-center items-center gap-14 md:flex-row md:items-center lg:gap-20"
-  >
-    <!-- Left side -->
-    <div class="relative w-full md:w-1/2 gap-14">
-      <div class="relative px-8 sm:px-12 md:px-8 lg:px-12">
-        <!-- Vertical label -->
-        <div
-          class="absolute -left-14 top-1/2 hidden -translate-y-1/2 -rotate-90 items-center gap-3 mr-8 md:mr-4 md:flex"
+ <div
+  class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-14 md:flex-row md:items-center lg:gap-16 xl:gap-20"
+>
+<!-- Left side -->
+<div class="w-full md:w-1/2">
+
+  <div class="flex">
+
+    <!-- Vertical label -->
+    <div
+      class="hidden md:flex w-16 lg:w-20 items-center justify-center flex-shrink-0"
+    >
+      <div class="-rotate-90 flex items-center gap-3 whitespace-nowrap">
+
+        <div class="w-10 h-px bg-[#5FD4F0]"></div>
+
+        <p
+          class="text-xs uppercase tracking-[0.25em] text-[#94A3B8]"
         >
-          <div class="h-px w-10 bg-[#5FD4F0]"></div>
+          {{ 'skills.verticalLabel' | translate }}
+        </p>
 
-          <p
-            class="hidden lg:flex whitespace-nowrap text-xs font-medium uppercase tracking-[0.3em] text-[#94A3B8]"
-          >
-            {{ 'skills.verticalLabel' | translate }}
-          </p>
-        </div>
+      </div>
+    </div>
 
-        <div class="mx-auto max-w-3xl text-center md:text-left">
-          <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#5FD4F0]">
-            {{ 'skills.header' | translate }}
-          </p>
+    <!-- Content -->
+    <div class="flex-1">
 
-          <h2 class="mt-4 text-3xl font-bold leading-tight text-[white] md:text-4xl xl:text-5xl">
-            {{ 'skills.title' | translate }}
-          </h2>
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#5FD4F0]">
+        {{ 'skills.header' | translate }}
+      </p>
 
-          <p class="mt-6 max-w-xl text-sm leading-7 text-[#94A3B8]">
-            {{ 'skills.description' | translate }}
-          </p>
+      <h2
+        class="mt-4 text-3xl font-bold leading-tight text-white md:text-4xl xl:text-5xl"
+      >
+        {{ 'skills.title' | translate }}
+      </h2>
+
+      <p class="mt-6 max-w-xl text-sm leading-7 text-[#94A3B8]">
+        {{ 'skills.description' | translate }}
+      </p>
 
           <!-- Tabs -->
           <div
@@ -87,7 +97,9 @@
     </div>
 
     <!-- Right side -->
-    <div class="w-full md:w-[70%] lg:min-h-[600px] p-0 lg:p-4 shadow-lg mx-auto flex flex-col justify-center items-center">
+    <div
+  class="mx-auto flex w-full flex-col items-center justify-center p-0 shadow-lg md:w-1/2 lg:min-h-[600px] lg:w-[58%] lg:p-4"
+>
       @if (activeCategory() !== 'services') {
         <!-- Skills and tools -->
         <div class="w-full grid grid-cols-3 gap-4">

@@ -1,5 +1,6 @@
 <!-- Desktop vertical nav (lg and up) -->
-<nav #desktopNav
+<nav
+  #desktopNav
   (pointerdown)="startDrag($event)"
   [class.at-projects]="activeId() === 'projects'"
   class="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur lg:block"
@@ -8,47 +9,41 @@
   <div class="relative flex flex-col items-center gap-2 md:gap-8">
     <div
       class="pointer-events-none absolute left-1/2 top-1 bottom-1 w-px -translate-x-1/2 bg-[#1E2733]"
-    >
-    </div>
+    ></div>
 
-    @for (section of sections; track section){
-<a
-  [href]="'#' + section.id"
-  (click)="onLinkClick($event, section.id)"
-  class="group relative z-10 flex h-9 w-9 items-center justify-center"
-  [attr.aria-current]="activeId() === section.id ? 'page' : null"
-  [attr.aria-label]="section.label"
->
-  <span
-    class="material-symbols-outlined transition-all duration-300
-           group-hover:scale-110 group-hover:text-[#5FD4F0]"
-    [class.text-[#5FD4F0]]="activeId() === section.id"
-    [class.text-[#64748B]]="activeId() !== section.id"
-    [class.drop-shadow-[0_0_5px_#5FD4F0]]="
-      activeId() === section.id
-    "
-    [style.font-variation-settings]="
-      activeId() === section.id
-        ? '\'FILL\' 1, \'wght\' 600, \'GRAD\' 0, \'opsz\' 24'
-        : '\'FILL\' 0, \'wght\' 400, \'GRAD\' 0, \'opsz\' 24'
-    "
-  >
-    {{ section.icon }}
-  </span>
+    @for (section of sections; track section) {
+      <a
+        [attr.href]="'/#' + section.id"
+        (click)="onLinkClick($event, section.id)"
+        class="group relative z-10 flex h-9 w-9 items-center justify-center"
+        [attr.aria-current]="activeId() === section.id ? 'location' : null"
+        [attr.aria-label]="section.label | translate"
+      >
+        <span
+          class="material-symbols-outlined transition-all duration-300 group-hover:scale-110 group-hover:text-[#5FD4F0]"
+          [class.text-[#5FD4F0]]="activeId() === section.id"
+          [class.text-[#64748B]]="activeId() !== section.id"
+          [class.drop-shadow-[0_0_5px_#5FD4F0]]="activeId() === section.id"
+          [style.font-variation-settings]="
+            activeId() === section.id
+              ? '\'FILL\' 1, \'wght\' 600, \'GRAD\' 0, \'opsz\' 24'
+              : '\'FILL\' 0, \'wght\' 400, \'GRAD\' 0, \'opsz\' 24'
+          "
+        >
+          {{ section.icon }}
+        </span>
 
-  <span
-    class="pointer-events-none absolute left-full ml-3 -translate-x-1
-           whitespace-nowrap rounded-md border border-[#1E2733]
-           bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2]
-           opacity-0 shadow-lg transition-all duration-200 ease-out
-           group-hover:translate-x-0 group-hover:opacity-100"
-  >
-    {{ section.label | translate }}
-  </span>
-</a>
+        <span
+          class="pointer-events-none absolute left-full ml-3 -translate-x-1 whitespace-nowrap rounded-md border border-[#1E2733] bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2] opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+        >
+          {{ section.label | translate }}
+        </span>
+      </a>
     }
 
-    <div class="lg:hidden mt-4 flex flex-col items-center gap-2 rounded-3xl border border-[#334155] bg-[#0A0E14]/80 px-3 py-3 text-xs text-[#CFE9F2]">
+    <div
+      class="lg:hidden mt-4 flex flex-col items-center gap-2 rounded-3xl border border-[#334155] bg-[#0A0E14]/80 px-3 py-3 text-xs text-[#CFE9F2]"
+    >
       <button
         type="button"
         (click)="setLanguage('en')"
@@ -75,7 +70,14 @@
 
 <!-- Mobile: hamburger in top-right that opens a compact nav -->
 <div class="fixed right-4 top-4 z-60 lg:hidden">
-  <button *ngIf="mobileBurgerVisible || mobileOpen" (click)="toggleMobileMenu()" aria-controls="mobile-nav" [attr.aria-expanded]="mobileOpen" aria-label="Άνοιγμα πλοήγησης" class="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[#1E2733] bg-[#10161F]/80 text-[#CFE9F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5FD4F0]">
+  <button
+    *ngIf="mobileBurgerVisible || mobileOpen"
+    (click)="toggleMobileMenu()"
+    aria-controls="mobile-nav"
+    [attr.aria-expanded]="mobileOpen"
+    aria-label="Άνοιγμα πλοήγησης"
+    class="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[#1E2733] bg-[#10161F]/80 text-[#CFE9F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5FD4F0]"
+  >
     <span *ngIf="!mobileOpen">
       <span class="material-symbols-outlined inline-flex pt-1 items-center justify-center">
         menu
@@ -84,8 +86,14 @@
     <span *ngIf="mobileOpen">✕</span>
   </button>
 
-  <div *ngIf="mobileOpen" id="mobile-nav" class="mt-2 w-52 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg">
-    <div class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[#334155] bg-[#0A0E14]/80 p-2 text-sm text-[#CFE9F2]">
+  <div
+    *ngIf="mobileOpen"
+    id="mobile-nav"
+    class="mt-2 w-52 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg"
+  >
+    <div
+      class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[#334155] bg-[#0A0E14]/80 p-2 text-sm text-[#CFE9F2]"
+    >
       <button
         type="button"
         (click)="setLanguage('en')"
@@ -109,8 +117,18 @@
     </div>
 
     <nav class="flex flex-col gap-1">
-      @for (section of sections; track section){
-      <a (click)="onLinkClick($event, section.id)" [href]="'#' + section.id" class="block rounded px-3 py-2 text-sm text-[var(--fg)] hover:bg-[#0F1720]/60">• {{ section.label | translate }}</a>
+      @for (section of sections; track section) {
+        <a
+          [attr.href]="'/#' + section.id"
+          (click)="onLinkClick($event, section.id)"
+          class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-[var(--fg)] transition hover:bg-[#0F1720]/60"
+        >
+          <span class="material-symbols-outlined text-lg">
+            {{ section.icon }}
+          </span>
+
+          {{ section.label | translate }}
+        </a>
       }
     </nav>
   </div>

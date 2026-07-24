@@ -1,0 +1,18 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="32" fill="#0A0E14"/>
+  <rect x="48" y="48" width="1104" height="704" rx="24" fill="#10161F" stroke="#5FD4F0" stroke-width="4"/>
+  <rect x="104" y="128" width="992" height="96" rx="20" fill="#1E2733"/>
+  <rect x="104" y="272" width="640" height="28" rx="14" fill="#5FD4F0" fill-opacity="0.75"/>
+  <rect x="104" y="324" width="520" height="22" rx="11" fill="#94A3B8"/>
+  <rect x="104" y="372" width="460" height="22" rx="11" fill="#94A3B8"/>
+  <rect x="104" y="444" width="220" height="24" rx="12" fill="#5FD4F0" fill-opacity="0.85"/>
+  <rect x="104" y="492" width="180" height="18" rx="9" fill="#263445"/>
+  <rect x="104" y="524" width="200" height="18" rx="9" fill="#263445"/>
+  <rect x="820" y="248" width="220" height="260" rx="28" fill="#0F172A" stroke="#263445" stroke-width="4"/>
+  <path d="M887 386C887 333.352 929.352 291 982 291H982C1034.65 291 1077 333.352 1077 386V386C1077 438.648 1034.65 481 982 481H982C929.352 481 887 438.648 887 386V386Z" fill="#5FD4F0" fill-opacity="0.2"/>
+  <path d="M928 370C928 344.595 948.595 324 974 324H990C1015.41 324 1036 344.595 1036 370V370C1036 395.405 1015.41 416 990 416H974C948.595 416 928 395.405 928 370V370Z" fill="#5FD4F0"/>
+  <rect x="840" y="548" width="180" height="20" rx="10" fill="#94A3B8"/>
+  <rect x="840" y="584" width="140" height="16" rx="8" fill="#263445"/>
+  <text x="152" y="186" fill="#E7EDF5" font-family="Arial, sans-serif" font-size="44" font-weight="700">Certificate</text>
+  <text x="152" y="232" fill="#5FD4F0" font-family="Arial, sans-serif" font-size="24" font-weight="600">Professional Achievement</text>
+</svg>

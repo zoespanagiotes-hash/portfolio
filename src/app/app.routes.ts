@@ -11,7 +11,7 @@ export const routes: Routes = [
         path: 'certifications',
         loadComponent: () =>
             import('./pages/certifications/certifications')
-            .then(m => m.Certifications)
+            .then(m => m.CertificationsComponent)
     },
     {
         path: '**',

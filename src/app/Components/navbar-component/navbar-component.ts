@@ -13,6 +13,9 @@ import {
 import { CommonModule } from '@angular/common';
 import { TranslatePipe } from '../../translate.pipe';
 import { TranslateService } from '../../translate.service';
+import { Router, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs';
 
 export interface NavSection {
   id: string;
@@ -28,7 +31,8 @@ export interface NavSection {
   templateUrl: './navbar-component.html',
   styleUrl: './navbar-component.scss',
 })
-export class NavbarComponent implements AfterViewInit, OnDestroy{
+export class NavbarComponent implements AfterViewInit, OnDestroy {
+  private router = inject(Router);
   private translateService = inject(TranslateService);
   private cdr = inject(ChangeDetectorRef);
 
@@ -48,17 +52,17 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
   @ViewChild('desktopNav', { static: true }) desktopNav!: ElementRef<HTMLElement>;
 
   @Input() sections: NavSection[] = [
-      { id: 'home', label: 'navbar.sections.home', icon: 'home' },
-      { id: 'about', label: 'navbar.sections.about', icon: 'info' },
-      { id: 'skills', label: 'navbar.sections.skills', icon: 'star' },
-      { id: 'my-journey', label: 'navbar.sections.myJourney', icon: 'work' },
-      { id: 'contact', label: 'navbar.sections.contact', icon: 'email' },
+    { id: 'home', label: 'navbar.sections.home', icon: 'home' },
+    { id: 'about', label: 'navbar.sections.about', icon: 'info' },
+    { id: 'skills', label: 'navbar.sections.skills', icon: 'star' },
+    { id: 'my-journey', label: 'navbar.sections.my-journey', icon: 'work' },
+    { id: 'contact', label: 'navbar.sections.contact', icon: 'email' },
   ];
- 
+
   readonly activeId = signal<string>('');
- 
+
   private observer?: IntersectionObserver;
- 
+
   ngAfterViewInit(): void {
     // στοίβα microtask ώστε να έχουν προλάβει να μπουν τα ids στο DOM
     queueMicrotask(() => this.setupObserver());
@@ -71,7 +75,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
     this.pointerMoveHandler = this.onPointerMove.bind(this);
     this.pointerUpHandler = this.onPointerUp.bind(this);
   }
-  
+
   ngOnDestroy(): void {
     this.observer?.disconnect();
     window.removeEventListener('scroll', this.scrollHandler);
@@ -79,7 +83,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
     window.removeEventListener('pointermove', this.pointerMoveHandler);
     window.removeEventListener('pointerup', this.pointerUpHandler);
   }
- 
+
   private setupObserver(): void {
     const elements = this.sections
       .map((s) => document.getElementById(s.id))
@@ -99,7 +103,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
           }
         });
       },
-      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0 },
     );
 
     elements.forEach((el) => this.observer!.observe(el));
@@ -183,13 +187,49 @@ export class NavbarComponent implements AfterViewInit, OnDestroy{
       this.cdr.markForCheck();
     });
   }
- 
-  onLinkClick(event: Event, id: string): void {
+
+  private scrollToSection(id: string): void {
+    const element = document.getElementById(id);
+
+    if (!element) {
+      return;
+    }
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+
+    this.activeId.set(id);
+  }
+
+  async onLinkClick(event: Event, id: string): Promise<void> {
     event.preventDefault();
     this.closeMobileMenu();
-    document
-      .getElementById(id)
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    const isHomePage = this.router.url.split('#')[0] === '/';
+
+    if (isHomePage) {
+      this.scrollToSection(id);
+
+      await this.router.navigate([], {
+        fragment: id,
+        replaceUrl: true,
+      });
+
+      return;
+    }
+
+    await this.router.navigate(['/'], {
+      fragment: id,
+    });
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        this.scrollToSection(id);
+        this.setupObserver();
+      });
+    });
   }
 
   toggleMobileMenu(): void {
