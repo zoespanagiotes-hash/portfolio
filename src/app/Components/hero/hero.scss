@@ -170,3 +170,125 @@ ol.sketch-timeline::before {
 @media (prefers-reduced-motion: reduce) {
   .scribble path, .sparkle, .float-shape, .rotating-badge, .particles .particle { animation: none }
 }
+
+.photo-float {
+  width: 100%;
+}
+
+.photo-blend {
+  width: 100%;
+  transition: transform 180ms ease-out;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/*
+ * Αυτό το element κρατά πάντα το ίδιο μέγεθος.
+ * Δεν αλλάζει είτε η εικόνα φορτώνει, είτε εμφανιστεί error.
+ */
+.profile-image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+/*
+ * Loader και error γεμίζουν ακριβώς τον χώρο
+ * που θα καταλάμβανε η εικόνα.
+ */
+.profile-image-state {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 2rem;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(95, 212, 240, 0.08),
+      transparent 65%
+    ),
+    rgba(10, 14, 20, 0.35);
+
+  backdrop-filter: blur(6px);
+}
+
+.profile-image-error {
+  color: #cfe9f2;
+}
+
+.profile-image-error-content {
+  display: flex;
+  max-width: 18rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.profile-image-error-icon {
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(240, 168, 104, 0.5);
+  border-radius: 9999px;
+
+  color: #f0a868;
+  font-size: 1.25rem;
+  font-weight: 700;
+
+  background: rgba(240, 168, 104, 0.08);
+}
+
+.profile-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+/*
+ * Η εικόνα εμφανίζεται αφού ολοκληρωθεί το load.
+ */
+.profile-image-loaded {
+  opacity: 1;
+}
+
+/*
+ * Σε error παραμένει στον DOM και κρατά τις διαστάσεις,
+ * αλλά δεν είναι ορατή.
+ */
+.profile-image-failed {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 1023px) {
+  .profile-image-frame {
+    max-width: 32rem;
+    min-height: 280px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .profile-image-frame {
+    min-height: 240px;
+    border-radius: 1.5rem;
+  }
+}

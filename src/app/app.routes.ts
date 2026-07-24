@@ -4,8 +4,8 @@ export const routes: Routes = [
     {
         path: '',
         loadComponent: () =>
-            import('./pages/mainPage/main')
-            .then(m => m.Main)
+            import('./pages/mainPage/mainPage')
+            .then(m => m.MainPageComponent)
     },
     {
         path: 'certifications',

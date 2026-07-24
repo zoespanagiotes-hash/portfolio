@@ -91,7 +91,9 @@
           type="button"
           disabled
           class="group inline-flex cursor-not-allowed items-center gap-2 rounded-lg bg-[#5FD4F0] px-6 py-3 font-medium text-[#0A0E14] shadow-[0_0_30px_-8px_#5FD4F0] transition duration-200 opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5FD4F0]"
-          aria-label="{{ 'hero.projectsButton' | translate }} {{ 'hero.projectsComingSoon' | translate }}"
+          aria-label="{{ 'hero.projectsButton' | translate }} {{
+            'hero.projectsComingSoon' | translate
+          }}"
         >
           {{ 'hero.projectsButton' | translate }}
           <span aria-hidden="true">→</span>
@@ -113,7 +115,6 @@
     <div class="relative hidden lg:flex flex-1 lg:max-w-lg">
       <ng-template [ngTemplateOutlet]="photoWrap"></ng-template>
     </div>
-
   </div>
 
   <!-- scroll cue -->
@@ -127,104 +128,155 @@
   </div>
 </section>
 
-<ng-template
-  #photoWrap
-  class="photo-float relative flex-1 lg:max-w-lg"
-  (mousemove)="onPhotoMove($event, photoWrap)"
-  (mouseleave)="onPhotoLeave()"
->
+<ng-template #photoWrap>
   <div
-    class="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-[#5FD4F0]/[0.09] blur-[100px]"
-  ></div>
-
-  <!-- comic halftone screen-tone, σαν το texture ενός κόμικ πάνελ -->
-  <div class="halftone pointer-events-none absolute -inset-10 -z-10"></div>
-
-  <!-- λεπτό dashed "ink ring", σαν sticker outline γύρω από την εικόνα -->
-  <svg
-    class="ink-ring pointer-events-none absolute -inset-8 -z-10 h-[calc(100%+4rem)] w-[calc(100%+4rem)]"
-    viewBox="0 0 100 100"
-    aria-hidden="true"
+    #photoElement
+    class="photo-float relative w-full lg:max-w-lg"
+    (mousemove)="onPhotoMove($event, photoElement)"
+    (mouseleave)="onPhotoLeave()"
   >
-    <circle
-      cx="50"
-      cy="50"
-      r="47"
-      fill="none"
-      stroke="#5FD4F0"
-      stroke-width="0.5"
-      stroke-dasharray="1.2 5"
-      opacity="0.45"
-    />
-  </svg>
+    <div
+      class="pointer-events-none absolute -inset-10 -z-10 rounded-full bg-[#5FD4F0]/[0.09] blur-[100px]"
+    ></div>
 
-  <!-- comic-style sparkle accents -->
-  <svg
-    class="sparkle sparkle-1 pointer-events-none absolute -top-2 right-8 z-20 h-7 w-7"
-    viewBox="0 0 24 24"
-    fill="#5FD4F0"
-    aria-hidden="true"
-  >
-    <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" />
-  </svg>
-  <svg
-    class="sparkle sparkle-2 pointer-events-none absolute bottom-10 -left-3 z-20 h-4 w-4"
-    viewBox="0 0 24 24"
-    fill="#F0A868"
-    aria-hidden="true"
-  >
-    <path d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z" />
-  </svg>
+    <div
+      class="halftone pointer-events-none absolute -inset-10 -z-10"
+    ></div>
 
-  <div class="photo-blend relative flex justify-center" [style.transform]="tiltTransform()">
-    <!-- floating decorative blob -->
     <svg
-      class="float-shape shape-1 pointer-events-none absolute -top-10 -right-6 z-10 h-28 w-28"
+      class="ink-ring pointer-events-none absolute -inset-8 -z-10 h-[calc(100%+4rem)] w-[calc(100%+4rem)]"
       viewBox="0 0 100 100"
       aria-hidden="true"
     >
-      <path
-        d="M20,50 C20,30 40,10 60,20 C80,30 90,60 70,75 C50,90 25,80 20,50"
-        fill="#5FD4F0"
-        opacity="0.08"
-      ></path>
+      <circle
+        cx="50"
+        cy="50"
+        r="47"
+        fill="none"
+        stroke="#5FD4F0"
+        stroke-width="0.5"
+        stroke-dasharray="1.2 5"
+        opacity="0.45"
+      />
     </svg>
 
-    <!-- rotating availability badge -->
-    <div class="rotating-badge absolute top-4 left-4 z-30 pointer-events-auto">
-      <div
-        class="badge-inner inline-flex items-center gap-2 rounded-full bg-[#0A0E14]/90 border border-[#1E2733] px-3 py-1 text-xs text-[#CFE9F2] backdrop-blur"
+    <svg
+      class="sparkle sparkle-1 pointer-events-none absolute -top-2 right-8 z-20 h-7 w-7"
+      viewBox="0 0 24 24"
+      fill="#5FD4F0"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z"
+      />
+    </svg>
+
+    <svg
+      class="sparkle sparkle-2 pointer-events-none absolute bottom-10 -left-3 z-20 h-4 w-4"
+      viewBox="0 0 24 24"
+      fill="#F0A868"
+      aria-hidden="true"
+    >
+      <path
+        d="M12 0 L14 9 L24 12 L14 15 L12 24 L10 15 L0 12 L10 9 Z"
+      />
+    </svg>
+
+    <div
+      class="photo-blend relative w-full overflow-hidden"
+      [style.transform]="tiltTransform()"
+    >
+      <svg
+        class="float-shape shape-1 pointer-events-none absolute -top-10 -right-6 z-10 h-28 w-28"
+        viewBox="0 0 100 100"
+        aria-hidden="true"
       >
-        <span class="relative flex h-2 w-2">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping-slow rounded-full bg-[#5FD4F0] opacity-60"
-          ></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-[#5FD4F0]"></span>
-        </span>
-        Διαθέσιμος
+        <path
+          d="M20,50 C20,30 40,10 60,20 C80,30 90,60 70,75 C50,90 25,80 20,50"
+          fill="#5FD4F0"
+          opacity="0.08"
+        ></path>
+      </svg>
+
+      <div
+        class="rotating-badge pointer-events-auto absolute top-4 left-4 z-30"
+      >
+        <div
+          class="badge-inner inline-flex items-center gap-2 rounded-full border border-[#1E2733] bg-[#0A0E14]/90 px-3 py-1 text-xs text-[#CFE9F2] backdrop-blur"
+        >
+          <span class="relative flex h-2 w-2">
+            <span
+              class="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-[#5FD4F0] opacity-60"
+            ></span>
+
+            <span
+              class="relative inline-flex h-2 w-2 rounded-full bg-[#5FD4F0]"
+            ></span>
+          </span>
+
+          Διαθέσιμος
+        </div>
       </div>
+
+      <div
+        class="lens-glare pointer-events-none absolute inset-0 z-20"
+      ></div>
+
+      <div
+        class="particles pointer-events-none absolute inset-0 z-10"
+      >
+        <span class="particle p1"></span>
+        <span class="particle p2"></span>
+        <span class="particle p3"></span>
+      </div>
+
+      <div class="profile-image-frame">
+        @if (!imageLoaded() && !imageError()) {
+          <div class="profile-image-state">
+            <app-loading-spinner
+              [size]="56"
+              label="Φόρτωση εικόνας..."
+              [showLabel]="true"
+            />
+          </div>
+        }
+
+        @if (imageError()) {
+          <div
+            class="profile-image-state profile-image-error"
+            role="alert"
+          >
+            <div class="profile-image-error-content">
+              <span
+                class="profile-image-error-icon"
+                aria-hidden="true"
+              >
+                !
+              </span>
+
+              <p>Η εικόνα δεν ήταν δυνατό να φορτωθεί.</p>
+            </div>
+          </div>
+        }
+
+        <img
+          [src]="profileImageUrl"
+          alt="Profile illustration"
+          width="700"
+          height="700"
+          decoding="async"
+          fetchpriority="high"
+          class="profile-image"
+          [class.profile-image-loaded]="imageLoaded()"
+          [class.profile-image-failed]="imageError()"
+          (load)="onImageLoad()"
+          (error)="onImageError()"
+        />
+      </div>
+
+      <div
+        class="photo-tint pointer-events-none absolute inset-0"
+      ></div>
     </div>
-
-    <!-- lens glare -->
-    <div class="lens-glare pointer-events-none absolute inset-0 z-20"></div>
-
-    <!-- subtle particle accents -->
-    <div class="particles pointer-events-none absolute inset-0 z-10">
-      <span class="particle p1"></span>
-      <span class="particle p2"></span>
-      <span class="particle p3"></span>
-    </div>
-
-    <img
-      src="assets/images/profile-illustration.png"
-      [alt]="name + ' — ' + role + ', μπροστά από τις οθόνες του'"
-      class="mx-auto block h-auto w-56 sm:w-72 md:w-80 lg:w-96 object-cover rounded-xl photo-float select-none"
-      width="1024"
-      height="1536"
-      draggable="false"
-    />
-
-    <!-- χρωματική "βαφή" ώστε η φωτο να μιλά την ίδια γλώσσα χρώματος με το site -->
-    <div class="photo-tint absolute inset-0 pointer-events-none"></div>
   </div>
 </ng-template>
