@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  color: #5fd4f0;
+  color: var(--accent);
 }
 
 .loading-spinner__icon {
@@ -19,7 +19,7 @@
 
 .loading-spinner__label {
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: var(--muted);
 }
 
 @keyframes loading-spinner-rotate {

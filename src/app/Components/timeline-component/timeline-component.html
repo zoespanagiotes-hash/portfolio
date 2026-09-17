@@ -1,13 +1,13 @@
 <section
   id="my-journey"
-  class="bg-[var(--background-secondary-color)] px-6 py-20 text-white md:px-8 xl:px-20"
+  class="bg-[var(--background-secondary-color)] px-6 py-20 text-[var(--fg)] md:px-8 xl:px-20"
 >
   <div class="mx-auto w-full max-w-7xl">
     <!-- Section heading -->
     <div class="mx-auto max-w-3xl text-center">
       <p
         class="text-sm font-semibold uppercase tracking-[0.3em]
-               text-[#5FD4F0]"
+               text-[var(--accent)]"
       >
         {{ 'timeline.headerLabel' | translate }}
       </p>
@@ -19,7 +19,7 @@
         {{ 'timeline.headerTitle' | translate }}
       </h2>
 
-      <p class="mt-5 text-base leading-7 text-[#94A3B8]">
+      <p class="mt-5 text-base leading-7 text-[var(--muted)]">
         {{ 'timeline.description' | translate }}
       </p>
     </div>
@@ -30,8 +30,8 @@
         <div class="mb-10 flex items-center gap-4">
           <div
             class="flex h-12 w-12 items-center justify-center rounded-2xl
-                   border border-[#5FD4F0]/30 bg-[#5FD4F0]/10
-                   text-[#5FD4F0]"
+                   border border-[var(--accent)]/30 bg-[var(--accent)]/10
+                   text-[var(--accent)]"
           >
             <span class="material-symbols-outlined">
               work
@@ -41,12 +41,12 @@
           <div>
             <p
               class="text-xs font-medium uppercase tracking-[0.25em]
-                     text-[#5FD4F0]"
+                     text-[var(--accent)]"
             >
               {{ 'timeline.sections.career' | translate }}
             </p>
 
-            <h3 class="mt-1 text-2xl font-bold text-[#F8FAFC]">
+            <h3 class="mt-1 text-2xl font-bold text-[var(--fg)]">
               {{ 'timeline.titles.jobExperience' | translate }}
             </h3>
           </div>
@@ -65,19 +65,19 @@
                   <div
                     aria-hidden="true"
                     class="absolute bottom-0 top-12 w-px
-                           bg-gradient-to-b from-[#5FD4F0]/60
-                           to-[#334155]"
+                           bg-gradient-to-b from-[var(--accent)]/60
+                           to-[var(--border)]"
                   ></div>
                 }
 
                 <div
                   class="relative z-10 flex h-12 w-12 items-center
                          justify-center rounded-2xl border
-                         border-[#334155] bg-[#0F172A]
-                         text-[#5FD4F0]
+                         border-[var(--border)] bg-[var(--bg-elevated)]
+                         text-[var(--accent)]
                          transition-all duration-300
-                         group-hover:border-[#5FD4F0]
-                         group-hover:shadow-[0_0_25px_-8px_rgba(95,212,240,0.8)]"
+                         group-hover:border-[var(--accent)]
+                         group-hover:shadow-[0_0_25px_-8px_rgba(193,80,46,0.8)]"
                 >
                   <span class="material-symbols-outlined">
                     {{ item.icon }}
@@ -87,12 +87,12 @@
 
               <!-- Timeline card -->
               <div
-                class="mb-8 flex-1 rounded-3xl border border-[#334155]
-                       bg-gradient-to-br from-[#111827] to-[#0B1220]
+                class="mb-8 flex-1 rounded-3xl border border-[var(--border)]
+                       bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg)]
                        p-6 transition-all duration-300
                        group-hover:-translate-y-1
-                       group-hover:border-[#5FD4F0]/70
-                       group-hover:shadow-[0_20px_50px_-30px_rgba(95,212,240,0.6)]"
+                       group-hover:border-[var(--accent)]/70
+                       group-hover:shadow-[0_20px_50px_-30px_rgba(193,80,46,0.6)]"
               >
                 <div
                   class="flex flex-col gap-4 sm:flex-row
@@ -100,7 +100,7 @@
                 >
                   <div>
                     <div class="flex flex-wrap items-center gap-3">
-                      <h4 class="text-lg font-bold text-[#F8FAFC]">
+                      <h4 class="text-lg font-bold text-[var(--fg)]">
                         {{ item.title | translate }}
                       </h4>
 
@@ -121,7 +121,7 @@
                     </div>
 
                     @if (item.organization) {
-                      <p class="mt-1 font-medium text-[#5FD4F0]">
+                      <p class="mt-1 font-medium text-[var(--accent)]">
                         {{ item.organization | translate }}
                       </p>
                     }
@@ -129,9 +129,9 @@
 
                   <span
                     class="w-fit shrink-0 rounded-full
-                           border border-[#334155]
-                           bg-[#020617]/50 px-3 py-1.5
-                           text-xs font-medium text-[#CBD5E1]"
+                           border border-[var(--border)]
+                           bg-[var(--bg-secondary)]/50 px-3 py-1.5
+                           text-xs font-medium text-[var(--muted)]"
                   >
                     {{ item.period | translate }}
                   </span>
@@ -139,7 +139,7 @@
 
                 <div
                   class="mt-4 flex items-center gap-2
-                         text-sm text-[#94A3B8]"
+                         text-sm text-[var(--muted)]"
                 >
                   <span class="material-symbols-outlined text-lg">
                     location_on
@@ -148,7 +148,7 @@
                   {{ item.location | translate }}
                 </div>
 
-                <p class="mt-4 text-sm leading-7 text-[#94A3B8]">
+                <p class="mt-4 text-sm leading-7 text-[var(--muted)]">
                   {{ item.description | translate }}
                 </p>
               </div>
@@ -162,8 +162,8 @@
         <div class="mb-10 flex items-center gap-4">
           <div
             class="flex h-12 w-12 items-center justify-center rounded-2xl
-                   border border-[#5FD4F0]/30 bg-[#5FD4F0]/10
-                   text-[#5FD4F0]"
+                   border border-[var(--accent)]/30 bg-[var(--accent)]/10
+                   text-[var(--accent)]"
           >
             <span class="material-symbols-outlined">
               school
@@ -173,11 +173,11 @@
           <div>
             <p
               class="text-xs font-medium uppercase tracking-[0.25em]
-                     text-[#5FD4F0]"
+                     text-[var(--accent)]"
             >
               {{ 'timeline.sections.learning' | translate }}
             </p>
-            <h3 class="mt-1 text-2xl font-bold text-[#F8FAFC]">
+            <h3 class="mt-1 text-2xl font-bold text-[var(--fg)]">
               {{ 'timeline.titles.education' | translate }}
             </h3>
           </div>
@@ -196,19 +196,19 @@
                   <div
                     aria-hidden="true"
                     class="absolute bottom-0 top-12 w-px
-                           bg-gradient-to-b from-[#5FD4F0]/60
-                           to-[#334155]"
+                           bg-gradient-to-b from-[var(--accent)]/60
+                           to-[var(--border)]"
                   ></div>
                 }
 
                 <div
                   class="relative z-10 flex h-12 w-12 items-center
                          justify-center rounded-2xl border
-                         border-[#334155] bg-[#0F172A]
-                         text-[#5FD4F0]
+                         border-[var(--border)] bg-[var(--bg-elevated)]
+                         text-[var(--accent)]
                          transition-all duration-300
-                         group-hover:border-[#5FD4F0]
-                         group-hover:shadow-[0_0_25px_-8px_rgba(95,212,240,0.8)]"
+                         group-hover:border-[var(--accent)]
+                         group-hover:shadow-[0_0_25px_-8px_rgba(193,80,46,0.8)]"
                 >
                   <span class="material-symbols-outlined">
                     {{ item.icon }}
@@ -218,15 +218,15 @@
 
               <!-- Timeline card -->
               <div
-                class="mb-8 flex-1 min-h-[18rem] rounded-3xl border border-[#334155]
-                       bg-gradient-to-br from-[#111827] to-[#0B1220]
+                class="mb-8 flex-1 min-h-[18rem] rounded-3xl border border-[var(--border)]
+                       bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg)]
                        p-6 transition-all duration-300
                        group-hover:-translate-y-1
-                       group-hover:border-[#5FD4F0]/70
-                       group-hover:shadow-[0_20px_50px_-30px_rgba(95,212,240,0.6)]"
+                       group-hover:border-[var(--accent)]/70
+                       group-hover:shadow-[0_20px_50px_-30px_rgba(193,80,46,0.6)]"
               >
                 @if (isItemLoading(item)) {
-                  <div class="flex h-full min-h-[18rem] w-full items-center justify-center rounded-3xl border border-[#334155] bg-[#0F172A]/80 p-6">
+                  <div class="flex h-full min-h-[18rem] w-full items-center justify-center rounded-3xl border border-[var(--border)] bg-[var(--bg-elevated)]/80 p-6">
                     <app-loading-spinner [showLabel]="false" [size]="40"></app-loading-spinner>
                   </div>
                 } @else {
@@ -235,12 +235,12 @@
                            sm:items-start sm:justify-between"
                   >
                     <div>
-                      <h4 class="text-lg font-bold text-[#F8FAFC]">
+                      <h4 class="text-lg font-bold text-[var(--fg)]">
                         {{ item.title | translate }}
                       </h4>
 
                       @if (item.organization) {
-                        <p class="mt-1 font-medium text-[#5FD4F0]">
+                        <p class="mt-1 font-medium text-[var(--accent)]">
                           {{ item.organization | translate }}
                         </p>
                       }
@@ -248,9 +248,9 @@
 
                     <span
                       class="w-fit shrink-0 rounded-full
-                             border border-[#334155]
-                             bg-[#020617]/50 px-3 py-1.5
-                             text-xs font-medium text-[#CBD5E1]"
+                             border border-[var(--border)]
+                             bg-[var(--bg-secondary)]/50 px-3 py-1.5
+                             text-xs font-medium text-[var(--muted)]"
                     >
                       {{ item.period | translate }}
                     </span>
@@ -258,7 +258,7 @@
 
                   <div
                     class="mt-4 flex items-center gap-2
-                           text-sm text-[#94A3B8]"
+                           text-sm text-[var(--muted)]"
                   >
                     <span class="material-symbols-outlined text-lg">
                       location_on
@@ -267,7 +267,7 @@
                     {{ item.location | translate }}
                   </div>
 
-                  <p class="mt-4 text-sm leading-7 text-[#94A3B8]">
+                  <p class="mt-4 text-sm leading-7 text-[var(--muted)]">
                     {{ item.description | translate }}
                   </p>
                 }
@@ -282,7 +282,7 @@
               type="button"
               (click)="toggleEducation()"
               [attr.aria-expanded]="showAllEducation()"
-              class="mt-4 inline-flex items-center gap-2 rounded-full border border-[#5FD4F0]/40 bg-[#0F172A]/80 px-5 py-3 text-sm font-medium text-[#E7EDF5] transition duration-300 hover:border-[#5FD4F0] hover:text-[#5FD4F0] focus:outline-none focus:ring-0"
+              class="mt-4 inline-flex items-center gap-2 rounded-full border border-[var(--accent)]/40 bg-[var(--bg-elevated)]/80 px-5 py-3 text-sm font-medium text-[var(--fg)] transition duration-300 hover:border-[var(--accent)] hover:text-[var(--accent)] focus:outline-none focus:ring-0"
             >
               <span>
                 {{ showAllEducation() ? ('timeline.viewLess' | translate) : ('timeline.viewMore' | translate) }}

@@ -3,12 +3,12 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-thumb {
-  background: #666;
+  background: var(--border);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #666 #1e1e1e;
+  scrollbar-color: var(--border) var(--bg-elevated);
 }
 
 .desktop-nav {

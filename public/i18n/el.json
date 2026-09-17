@@ -13,16 +13,14 @@
   "hero": {
     "devLog": "// dev.log — {role}",
     "heading": {
-        "start": "Μετατρέπω τον καφέ σε κώδικα",
-        "highlight": "και τον κώδικα σε λύσεις"
+      "start": "Μετατρέπω τον καφέ σε κώδικα",
+      "highlight": "και τον κώδικα σε λύσεις"
     },
     "tagline": "Μετατρέπω τον καφέ σε κώδικα, και τον κώδικα σε λύσεις.",
     "description": "Δημιουργώ γρήγορα, καθαρά interfaces — από το πρώτο commit μέχρι το production.",
     "projectsButton": "Δες τα Projects",
     "projectsComingSoon": "Θα είναι σύντομα διαθέσιμο",
     "cvButton": "Κατέβασε CV",
-    "resumeButton": "Βιογραφικό",
-    "resumeComingSoon": "Σύντομα διαθέσιμο",
     "availability": "Διαθέσιμος για νέα projects",
     "techLabel": "Τεχνολογίες",
     "badgeAvailable": "Διαθέσιμος",

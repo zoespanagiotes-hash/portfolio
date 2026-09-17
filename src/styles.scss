@@ -1,21 +1,48 @@
 @use 'tailwindcss';
 
 :root {
-  --bg: #f8fafc; /* light background */
-  --fg: #0a0e14; /* light foreground */
+  color-scheme: dark;
+
+  /* Blueprint — dark mode (default). Deep drafting-ink blue with a
+     copper redline accent, echoing an actual technical blueprint. */
+  --bg: #16283c;
+  --bg-secondary: #101f2f;
+  --bg-elevated: #1b3350;
+  --fg: #e7eef2;
+  --muted: #9fb4c4;
+  --border: #2b4a66;
+  --border-soft: rgba(199, 219, 233, 0.16);
+  --accent: #c1502e;
+  --accent-strong: #d97a4f;
+  --accent-2: #d6a441;
+  --accent-contrast: #16283c;
+
   -webkit-user-select: none;
   user-select: none;
 }
 
-.dark {
-  --bg: #071124;
-  --fg: #e7edf5;
-  --bgSecond: #0b1425;
+:root.light {
+  color-scheme: light;
+
+  /* Whiteprint — light mode. The historical inverse of a blueprint: a
+     diazo/whiteprint has blue lines on cream paper instead of the other
+     way round, so this isn't just the dark palette lightened. */
+  --bg: #f3f1e6;
+  --bg-secondary: #eae7d9;
+  --bg-elevated: #ffffff;
+  --fg: #16283c;
+  --muted: #5b7185;
+  --border: #c7d0d8;
+  --border-soft: rgba(22, 40, 60, 0.14);
+  --accent: #a8431f;
+  --accent-strong: #8f3717;
+  --accent-2: #8a641c;
+  --accent-contrast: #f3f1e6;
 }
 
 body {
   background-color: var(--bg);
-  --background-secondary-color: var(--bgSecond);
+  --background-secondary-color: var(--bg-secondary);
   color: var(--fg);
 }
 

@@ -8,16 +8,11 @@ export class ThemeService {
   current: Theme = 'dark';
 
   constructor() {
+    // dark is the default regardless of system preference — only an
+    // explicit, previously saved choice switches to light
     const saved = localStorage.getItem(STORAGE_KEY) as Theme | null;
-    if (saved) {
-      this.current = saved;
-      this.apply(this.current);
-    } else {
-      // default to system preference
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.current = prefersDark ? 'dark' : 'light';
-      this.apply(this.current);
-    }
+    this.current = saved ?? 'dark';
+    this.apply(this.current);
   }
 
   toggle() {
@@ -28,10 +23,10 @@ export class ThemeService {
 
   apply(theme: Theme) {
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
+    if (theme === 'light') {
+      root.classList.add('light');
     } else {
-      root.classList.remove('dark');
+      root.classList.remove('light');
     }
   }
 }

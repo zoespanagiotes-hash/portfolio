@@ -4,7 +4,7 @@
   (pointerdown)="startDrag($event)"
   [class.at-projects]="activeId() === 'projects'"
   [class]="navPositionClass()"
-  class="z-50 hidden rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur transition-all duration-500 ease-in-out fixed lg:block"
+  class="z-50 hidden rounded-full border border-[var(--border-soft)] bg-[var(--bg-elevated)]/80 px-2 py-4 font-mono text-xs text-[var(--muted)] shadow-xl backdrop-blur transition-all duration-500 ease-in-out fixed lg:block"
   aria-label="{{ 'navbar.ariaLabel' | translate }}"
 >
   <div
@@ -17,22 +17,22 @@
           ? 'top-1/2 left-3 right-3 h-px -translate-y-1/2'
           : 'left-1/2 top-4 bottom-4 w-px -translate-x-1/2'
       "
-      class="pointer-events-none absolute bg-[#1E2733]"
+      class="pointer-events-none absolute bg-[var(--border-soft)]"
     ></div>
 
     @for (section of sections; track section) {
       <a
         [attr.href]="'/#' + section.id"
         (click)="onLinkClick($event, section.id)"
-        class="group relative z-10 flex h-9 w-9 items-center justify-center"
+        class="group relative z-10 flex h-9 w-9 items-center border-0 justify-center rounded-full bg-[var(--bg-elevated)]"
         [attr.aria-current]="activeId() === section.id ? 'location' : null"
         [attr.aria-label]="section.label | translate"
       >
         <span
-          class="material-symbols-outlined transition-all duration-300 group-hover:scale-110 group-hover:text-[#5FD4F0]"
-          [class.text-[#5FD4F0]]="activeId() === section.id"
-          [class.text-[#64748B]]="activeId() !== section.id"
-          [class.drop-shadow-[0_0_5px_#5FD4F0]]="activeId() === section.id"
+          class="material-symbols-outlined transition-all duration-300 group-hover:scale-110 group-hover:text-[var(--accent)]"
+          [class.text-[var(--accent)]]="activeId() === section.id"
+          [class.text-[var(--muted)]]="activeId() !== section.id"
+          [class.drop-shadow-[0_0_5px_var(--accent)]]="activeId() === section.id"
           [style.font-variation-settings]="
             activeId() === section.id
               ? '\'FILL\' 1, \'wght\' 600, \'GRAD\' 0, \'opsz\' 24'
@@ -43,7 +43,7 @@
         </span>
 
         <span
-          class="pointer-events-none absolute left-full ml-3 -translate-x-1 whitespace-nowrap rounded-md border border-[#1E2733] bg-[#10161F] px-2.5 py-1 text-[11px] text-[#CFE9F2] opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
+          class="pointer-events-none absolute left-full ml-3 -translate-x-1 whitespace-nowrap rounded-md border border-[var(--border-soft)] bg-[var(--bg-elevated)] px-2.5 py-1 text-[11px] text-[var(--fg)] opacity-0 shadow-lg transition-all duration-200 ease-out group-hover:translate-x-0 group-hover:opacity-100"
         >
           {{ section.label | translate }}
         </span>
@@ -51,14 +51,14 @@
     }
 
     <div
-      class="lg:hidden mt-4 flex flex-col items-center gap-2 rounded-3xl border border-[#334155] bg-[#0A0E14]/80 px-3 py-3 text-xs text-[#CFE9F2]"
+      class="lg:hidden mt-4 flex flex-col items-center gap-2 rounded-3xl border border-[var(--border)] bg-[var(--bg)]/80 px-3 py-3 text-xs text-[var(--fg)]"
     >
       <button
         type="button"
         (click)="setLanguage('en')"
-        [class.bg-[#5FD4F0]]="language() === 'en'"
-        [class.text-[#071118]]="language() === 'en'"
-        [class.text-[#CFE9F2]]="language() !== 'en'"
+        [class.bg-[var(--accent)]]="language() === 'en'"
+        [class.text-[var(--accent-contrast)]]="language() === 'en'"
+        [class.text-[var(--fg)]]="language() !== 'en'"
         class="rounded-full px-3 py-1 transition duration-200"
       >
         EN
@@ -66,9 +66,9 @@
       <button
         type="button"
         (click)="setLanguage('el')"
-        [class.bg-[#5FD4F0]]="language() === 'el'"
-        [class.text-[#071118]]="language() === 'el'"
-        [class.text-[#CFE9F2]]="language() !== 'el'"
+        [class.bg-[var(--accent)]]="language() === 'el'"
+        [class.text-[var(--accent-contrast)]]="language() === 'el'"
+        [class.text-[var(--fg)]]="language() !== 'el'"
         class="rounded-full px-3 py-1 transition duration-200"
       >
         EL
@@ -85,7 +85,7 @@
     aria-controls="mobile-nav"
     [attr.aria-expanded]="mobileOpen"
     aria-label="Άνοιγμα πλοήγησης"
-    class="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[#1E2733] bg-[#10161F]/80 text-[#CFE9F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#5FD4F0]"
+    class="inline-flex items-center justify-center h-12 w-12 rounded-full border border-[var(--border-soft)] bg-[var(--bg-elevated)]/80 text-[var(--fg)] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--accent)]"
   >
     <span *ngIf="!mobileOpen">
       <span class="material-symbols-outlined inline-flex pt-1 items-center justify-center">
@@ -98,17 +98,17 @@
   <div
     *ngIf="mobileOpen"
     id="mobile-nav"
-    class="mt-2 w-fit rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg"
+    class="mt-2 w-fit rounded-lg border border-[var(--border-soft)] bg-[var(--bg)] p-3 shadow-lg"
   >
     <div
-      class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[#334155] bg-[#0A0E14]/80 p-2 text-sm text-[#CFE9F2]"
+      class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--bg)]/80 p-2 text-sm text-[var(--fg)]"
     >
       <button
         type="button"
         (click)="setLanguage('en')"
-        [class.bg-[#5FD4F0]]="language() === 'en'"
-        [class.text-[#071118]]="language() === 'en'"
-        [class.text-[#CFE9F2]]="language() !== 'en'"
+        [class.bg-[var(--accent)]]="language() === 'en'"
+        [class.text-[var(--accent-contrast)]]="language() === 'en'"
+        [class.text-[var(--fg)]]="language() !== 'en'"
         class="rounded-full px-3 py-1 transition duration-200"
       >
         EN
@@ -116,9 +116,9 @@
       <button
         type="button"
         (click)="setLanguage('el')"
-        [class.bg-[#5FD4F0]]="language() === 'el'"
-        [class.text-[#071118]]="language() === 'el'"
-        [class.text-[#CFE9F2]]="language() !== 'el'"
+        [class.bg-[var(--accent)]]="language() === 'el'"
+        [class.text-[var(--accent-contrast)]]="language() === 'el'"
+        [class.text-[var(--fg)]]="language() !== 'el'"
         class="rounded-full px-3 py-1 transition duration-200"
       >
         EL
@@ -130,7 +130,7 @@
         <a
           [attr.href]="'/#' + section.id"
           (click)="onLinkClick($event, section.id)"
-          class="flex items-center gap-3 rounded-lg border-2 border-[#334155]/40 px-3 py-4 text-sm text-[var(--fg)] transition hover:bg-[#0F1720]/60"
+          class="flex items-center gap-3 rounded-lg border-2 border-[var(--border)]/40 px-3 py-4 text-sm text-[var(--fg)] transition hover:bg-[var(--bg-elevated)]/60"
         >
           <span class="material-symbols-outlined text-lg">
             {{ section.icon }}

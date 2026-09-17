@@ -1,6 +1,6 @@
 <section
   id="skills"
-  class="bg-[var(--background-secondary-color)] px-6 py-4 lg:py-16 text-white md:px-8 md:py-20 xl:px-20"
+  class="bg-[var(--background-secondary-color)] px-6 py-4 lg:py-16 text-[var(--fg)] md:px-8 md:py-20 xl:px-20"
 >
  <div
   class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-14 md:flex-row md:items-center lg:gap-16 xl:gap-20"
@@ -16,10 +16,10 @@
     >
       <div class="-rotate-90 flex items-center gap-3 whitespace-nowrap">
 
-        <div class="w-10 h-px bg-[#5FD4F0]"></div>
+        <div class="w-10 h-px bg-[var(--accent)]"></div>
 
         <p
-          class="text-xs uppercase tracking-[0.25em] text-[#94A3B8]"
+          class="text-xs uppercase tracking-[0.25em] text-[var(--muted)]"
         >
           {{ 'skills.verticalLabel' | translate }}
         </p>
@@ -30,23 +30,23 @@
     <!-- Content -->
     <div class="flex-1">
 
-      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[#5FD4F0]">
+      <p class="text-sm font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">
         {{ 'skills.header' | translate }}
       </p>
 
       <h2
-        class="mt-4 text-3xl font-bold leading-tight text-white md:text-4xl xl:text-5xl"
+        class="mt-4 text-3xl font-bold leading-tight text-[var(--fg)] md:text-4xl xl:text-5xl"
       >
         {{ 'skills.title' | translate }}
       </h2>
 
-      <p class="mt-6 max-w-xl text-sm leading-7 text-[#94A3B8]">
+      <p class="mt-6 max-w-xl text-sm leading-7 text-[var(--muted)]">
         {{ 'skills.description' | translate }}
       </p>
 
           <!-- Tabs -->
           <div
-            class="mt-8 inline-flex flex-wrap rounded-xl border border-[#334155] bg-[#0F172A]/80 p-1.5 shadow-lg"
+            class="mt-8 inline-flex flex-wrap rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)]/80 p-1.5 shadow-lg"
             role="tablist"
             aria-label="{{ 'skills.ariaLabel' | translate }}"
           >
@@ -56,10 +56,10 @@
               (click)="setActiveCategory('skills')"
               [attr.aria-selected]="activeCategory() === 'skills'"
               class="rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300"
-              [class.bg-[#5FD4F0]]="activeCategory() === 'skills'"
-              [class.text-[#071118]]="activeCategory() === 'skills'"
+              [class.bg-[var(--accent)]]="activeCategory() === 'skills'"
+              [class.text-[var(--accent-contrast)]]="activeCategory() === 'skills'"
               [class.shadow-md]="activeCategory() === 'skills'"
-              [class.text-[#94A3B8]]="activeCategory() !== 'skills'"
+              [class.text-[var(--muted)]]="activeCategory() !== 'skills'"
             >
               {{ 'skills.tabs.skills' | translate }}
             </button>
@@ -70,10 +70,10 @@
               (click)="setActiveCategory('tools')"
               [attr.aria-selected]="activeCategory() === 'tools'"
               class="rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300"
-              [class.bg-[#5FD4F0]]="activeCategory() === 'tools'"
-              [class.text-[#071118]]="activeCategory() === 'tools'"
+              [class.bg-[var(--accent)]]="activeCategory() === 'tools'"
+              [class.text-[var(--accent-contrast)]]="activeCategory() === 'tools'"
               [class.shadow-md]="activeCategory() === 'tools'"
-              [class.text-[#94A3B8]]="activeCategory() !== 'tools'"
+              [class.text-[var(--muted)]]="activeCategory() !== 'tools'"
             >
               {{ 'skills.tabs.tools' | translate }}
             </button>
@@ -84,10 +84,10 @@
               (click)="setActiveCategory('services')"
               [attr.aria-selected]="activeCategory() === 'services'"
               class="rounded-lg px-4 py-2.5 text-sm font-medium transition-all duration-300"
-              [class.bg-[#5FD4F0]]="activeCategory() === 'services'"
-              [class.text-[#071118]]="activeCategory() === 'services'"
+              [class.bg-[var(--accent)]]="activeCategory() === 'services'"
+              [class.text-[var(--accent-contrast)]]="activeCategory() === 'services'"
               [class.shadow-md]="activeCategory() === 'services'"
-              [class.text-[#94A3B8]]="activeCategory() !== 'services'"
+              [class.text-[var(--muted)]]="activeCategory() !== 'services'"
             >
               {{ 'skills.tabs.services' | translate }}
             </button>
@@ -106,24 +106,24 @@
         <div class="w-full grid grid-cols-3 gap-4">
           @for (item of visibleItems(); track item.name; let i = $index) {
             <article
-              class="skill-card group relative min-h-36 overflow-hidden rounded-2xl border border-[#334155] bg-gradient-to-br from-[#111827] to-[#0B1220] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[#5FD4F0] hover:shadow-[0_18px_40px_-18px_rgba(95,212,240,0.55)]"
+              class="skill-card group relative min-h-36 overflow-hidden rounded-2xl border border-[var(--border)] bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg)] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[var(--accent)] hover:shadow-[0_18px_40px_-18px_rgba(193,80,46,0.55)]"
               [style.animation-delay.ms]="i * 60"
             >
               <div
                 aria-hidden="true"
-                class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#5FD4F0]/10 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:bg-[#5FD4F0]/20"
+                class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--accent)]/10 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:bg-[var(--accent)]/20"
               ></div>
 
               <div
                 aria-hidden="true"
-                class="absolute inset-0 bg-gradient-to-t from-[#5FD4F0]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                class="absolute inset-0 bg-gradient-to-t from-[var(--accent)]/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
               ></div>
 
               <div
                 class="relative z-10 flex h-full flex-col items-center justify-center text-center"
               >
                 <div
-                  class="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#5FD4F0]/20 bg-[#5FD4F0]/10 text-[#5FD4F0] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:border-[#5FD4F0]/50 group-hover:bg-[#5FD4F0]/15"
+                  class="flex h-14 w-14 items-center justify-center rounded-2xl border border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:border-[var(--accent)]/50 group-hover:bg-[var(--accent)]/15"
                 >
                   <span class="material-symbols-outlined text-3xl">
                     {{ item.icon }}
@@ -131,7 +131,7 @@
                 </div>
 
                 <h3
-                  class="mt-4 text-sm font-semibold text-[#E2E8F0] transition-colors duration-300 group-hover:text-[#5FD4F0]"
+                  class="mt-4 text-sm font-semibold text-[var(--fg)] transition-colors duration-300 group-hover:text-[var(--accent)]"
                 >
                   {{ item.name | translate }}
                 </h3>
@@ -144,12 +144,12 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 min-w-full">
           @for (service of services; track service.title; let i = $index) {
             <article
-              class="skill-card group relative min-h-48 overflow-hidden rounded-2xl border border-[#334155] bg-gradient-to-br from-[#111827] to-[#0B1220] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[#5FD4F0] hover:shadow-[0_18px_40px_-18px_rgba(95,212,240,0.55)]"
+              class="skill-card group relative min-h-48 overflow-hidden rounded-2xl border border-[var(--border)] bg-gradient-to-br from-[var(--bg-elevated)] to-[var(--bg)] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[var(--accent)] hover:shadow-[0_18px_40px_-18px_rgba(193,80,46,0.55)]"
               [style.animation-delay.ms]="i * 60"
             >
               <!-- Service number -->
               <span
-                class="absolute right-4 top-2 text-5xl font-bold text-white/[0.04] transition-colors duration-500 group-hover:text-[#5FD4F0]/10"
+                class="absolute right-4 top-2 text-5xl font-bold text-[var(--fg)]/[0.04] transition-colors duration-500 group-hover:text-[var(--accent)]/10"
               >
                 {{ service.number }}
               </span>
@@ -157,12 +157,12 @@
               <!-- Glow -->
               <div
                 aria-hidden="true"
-                class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#5FD4F0]/10 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:bg-[#5FD4F0]/20"
+                class="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[var(--accent)]/10 blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:bg-[var(--accent)]/20"
               ></div>
 
               <div class="relative z-10">
                 <div
-                  class="flex h-12 w-12 items-center justify-center rounded-xl border border-[#5FD4F0]/20 bg-[#5FD4F0]/10 text-[#5FD4F0] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
+                  class="flex h-12 w-12 items-center justify-center rounded-xl border border-[var(--accent)]/20 bg-[var(--accent)]/10 text-[var(--accent)] transition-all duration-500 group-hover:scale-110 group-hover:rotate-6"
                 >
                   <span class="material-symbols-outlined text-2xl">
                     {{ service.icon }}
@@ -170,12 +170,12 @@
                 </div>
 
                 <h3
-                  class="mt-5 text-base font-bold text-[#E2E8F0] transition-colors duration-300 group-hover:text-[#5FD4F0]"
+                  class="mt-5 text-base font-bold text-[var(--fg)] transition-colors duration-300 group-hover:text-[var(--accent)]"
                 >
                   {{ service.title | translate }}
                 </h3>
 
-                <p class="mt-3 text-sm leading-6 text-[#94A3B8]">
+                <p class="mt-3 text-sm leading-6 text-[var(--muted)]">
                   {{ service.description | translate }}
                 </p>
               </div>
@@ -193,8 +193,8 @@
           class="h-2.5 rounded-full transition-all duration-300"
           [class.w-8]="activeCategory() === 'skills'"
           [class.w-2.5]="activeCategory() !== 'skills'"
-          [class.bg-[#5FD4F0]]="activeCategory() === 'skills'"
-          [class.bg-[#475569]]="activeCategory() !== 'skills'"
+          [class.bg-[var(--accent)]]="activeCategory() === 'skills'"
+          [class.bg-[var(--muted)]]="activeCategory() !== 'skills'"
         ></button>
 
         <button
@@ -204,8 +204,8 @@
           class="h-2.5 rounded-full transition-all duration-300"
           [class.w-8]="activeCategory() === 'tools'"
           [class.w-2.5]="activeCategory() !== 'tools'"
-          [class.bg-[#5FD4F0]]="activeCategory() === 'tools'"
-          [class.bg-[#475569]]="activeCategory() !== 'tools'"
+          [class.bg-[var(--accent)]]="activeCategory() === 'tools'"
+          [class.bg-[var(--muted)]]="activeCategory() !== 'tools'"
         ></button>
 
         <button
@@ -215,8 +215,8 @@
           class="h-2.5 rounded-full transition-all duration-300"
           [class.w-8]="activeCategory() === 'services'"
           [class.w-2.5]="activeCategory() !== 'services'"
-          [class.bg-[#5FD4F0]]="activeCategory() === 'services'"
-          [class.bg-[#475569]]="activeCategory() !== 'services'"
+          [class.bg-[var(--accent)]]="activeCategory() === 'services'"
+          [class.bg-[var(--muted)]]="activeCategory() !== 'services'"
         ></button>
       </div>
     </div>

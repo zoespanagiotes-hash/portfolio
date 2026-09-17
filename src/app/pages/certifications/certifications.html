@@ -2,22 +2,22 @@
 
 <main
   class="relative isolate min-h-screen w-full overflow-hidden
-         bg-[#0A0E14] font-sans text-[#E7EDF5]
+         bg-[var(--bg)] font-sans text-[var(--fg)]
          transition-all duration-300
          pl-0 lg:pl-24 xl:pl-0"
 >
 
   <div class="min-h-[calc(100vh-4rem)]">
 <section
-  class="relative min-h-screen overflow-hidden bg-[#0A0E14]
-         px-5 py-20 text-[#E7EDF5]
+  class="relative min-h-screen overflow-hidden bg-[var(--bg)]
+         px-5 py-20 text-[var(--fg)]
          sm:px-8 lg:px-12 xl:px-16"
 >
   <!-- Background decoration -->
   <div
     aria-hidden="true"
     class="pointer-events-none absolute left-[-10rem] top-20
-           h-80 w-80 rounded-full bg-[#5FD4F0]/10 blur-[120px]"
+           h-80 w-80 rounded-full bg-[var(--accent)]/10 blur-[120px]"
   ></div>
 
   <div
@@ -30,11 +30,11 @@
     <!-- Header -->
     <header class="max-w-4xl">
       <div class="mb-5 flex items-center gap-3">
-        <span class="h-px w-10 bg-[#5FD4F0]"></span>
+        <span class="h-px w-10 bg-[var(--accent)]"></span>
 
         <p
           class="font-mono text-xs uppercase tracking-[0.3em]
-                 text-[#5FD4F0]"
+                 text-[var(--accent)]"
         >
           Continuous learning
         </p>
@@ -45,13 +45,13 @@
                sm:text-5xl lg:text-6xl"
       >
         Certifications that reflect my
-        <span class="text-[#5FD4F0]">
+        <span class="text-[var(--accent)]">
           professional growth.
         </span>
       </h1>
 
       <p
-        class="mt-6 max-w-3xl text-base leading-8 text-[#94A3B8]
+        class="mt-6 max-w-3xl text-base leading-8 text-[var(--muted)]
                sm:text-lg"
       >
         A collection of certifications earned through continuous
@@ -65,41 +65,41 @@
       class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
     >
       <article
-        class="rounded-2xl border border-[#1E2733]
-               bg-[#10161F]/70 p-6 backdrop-blur"
+        class="rounded-2xl border border-[var(--border-soft)]
+               bg-[var(--bg-elevated)]/70 p-6 backdrop-blur"
       >
-        <p class="font-mono text-sm text-[#7C8A9C]">
+        <p class="font-mono text-sm text-[var(--muted)]">
           Certifications
         </p>
 
-        <p class="mt-2 text-4xl font-bold text-[#5FD4F0]">
+        <p class="mt-2 text-4xl font-bold text-[var(--accent)]">
           {{ certifications.length }}
         </p>
       </article>
 
       <article
-        class="rounded-2xl border border-[#1E2733]
-               bg-[#10161F]/70 p-6 backdrop-blur"
+        class="rounded-2xl border border-[var(--border-soft)]
+               bg-[var(--bg-elevated)]/70 p-6 backdrop-blur"
       >
-        <p class="font-mono text-sm text-[#7C8A9C]">
+        <p class="font-mono text-sm text-[var(--muted)]">
           Issuers
         </p>
 
-        <p class="mt-2 text-4xl font-bold text-[#5FD4F0]">
+        <p class="mt-2 text-4xl font-bold text-[var(--accent)]">
           {{ totalIssuers() }}
         </p>
       </article>
 
       <article
-        class="rounded-2xl border border-[#1E2733]
-               bg-[#10161F]/70 p-6 backdrop-blur
+        class="rounded-2xl border border-[var(--border-soft)]
+               bg-[var(--bg-elevated)]/70 p-6 backdrop-blur
                sm:col-span-2 lg:col-span-1"
       >
-        <p class="font-mono text-sm text-[#7C8A9C]">
+        <p class="font-mono text-sm text-[var(--muted)]">
           Learning journey
         </p>
 
-        <p class="mt-2 text-4xl font-bold text-[#5FD4F0]">
+        <p class="mt-2 text-4xl font-bold text-[var(--accent)]">
           2016—Today
         </p>
       </article>
@@ -114,7 +114,7 @@
         <div>
           <p
             class="font-mono text-xs uppercase tracking-[0.25em]
-                   text-[#5FD4F0]"
+                   text-[var(--accent)]"
           >
             Selected credentials
           </p>
@@ -124,7 +124,7 @@
           </h2>
         </div>
 
-        <p class="max-w-xl text-sm leading-6 text-[#7C8A9C]">
+        <p class="max-w-xl text-sm leading-6 text-[var(--muted)]">
           A selection of certifications that are most relevant to
           my current work and professional direction.
         </p>
@@ -137,16 +137,16 @@
         ) {
           <article
             class="group flex h-full flex-col overflow-hidden rounded-3xl
-                   border border-[#1E2733] bg-[#10161F]/75
+                   border border-[var(--border-soft)] bg-[var(--bg-elevated)]/75
                    transition duration-300
                    hover:-translate-y-1
-                   hover:border-[#5FD4F0]/50
-                   hover:shadow-[0_20px_60px_rgba(95,212,240,0.08)]"
+                   hover:border-[var(--accent)]/50
+                   hover:shadow-[0_20px_60px_rgba(193,80,46,0.08)]"
           >
             <button
               type="button"
               class="relative block aspect-[16/10] w-full
-                     overflow-hidden bg-[#070A0F] text-left"
+                     overflow-hidden bg-[var(--bg)] text-left"
               (click)="openPreview(certificate)"
               [attr.aria-label]="
                 'Preview certificate: ' + certificate.title
@@ -162,14 +162,14 @@
 
               <div
                 class="absolute inset-0 bg-gradient-to-t
-                       from-[#0A0E14]/80 via-transparent to-transparent"
+                       from-[var(--bg)]/80 via-transparent to-transparent"
               ></div>
 
               <div
                 class="absolute bottom-4 right-4 flex h-10 w-10
                        items-center justify-center rounded-full
-                       border border-white/10 bg-[#10161F]/90
-                       text-[#5FD4F0] backdrop-blur
+                       border border-[var(--border-soft)] bg-[var(--bg-elevated)]/90
+                       text-[var(--accent)] backdrop-blur
                        transition group-hover:scale-110"
               >
                 <span class="material-symbols-outlined text-xl">
@@ -185,30 +185,30 @@
                 <div>
                   <p
                     class="font-mono text-xs uppercase
-                           tracking-[0.18em] text-[#5FD4F0]"
+                           tracking-[0.18em] text-[var(--accent)]"
                   >
                     {{ certificate.issuer }}
                   </p>
 
                   <h3
                     class="mt-3 text-xl font-semibold leading-7
-                           text-[#E7EDF5]"
+                           text-[var(--fg)]"
                   >
                     {{ certificate.title }}
                   </h3>
                 </div>
 
                 <span
-                  class="shrink-0 rounded-full border border-[#263445]
+                  class="shrink-0 rounded-full border border-[var(--border)]
                          px-3 py-1 font-mono text-[11px]
-                         text-[#94A3B8]"
+                         text-[var(--muted)]"
                 >
                   {{ certificate.issueDate }}
                 </span>
               </div>
 
               <p
-                class="mt-4 flex-1 text-sm leading-7 text-[#94A3B8]"
+                class="mt-4 flex-1 text-sm leading-7 text-[var(--muted)]"
               >
                 {{ certificate.description }}
               </p>
@@ -219,9 +219,9 @@
                   track skill
                 ) {
                   <span
-                    class="rounded-full border border-[#263445]
-                           bg-[#0A0E14]/50 px-3 py-1
-                           text-xs text-[#AFC0D2]"
+                    class="rounded-full border border-[var(--border)]
+                           bg-[var(--bg)]/50 px-3 py-1
+                           text-xs text-[var(--muted)]"
                   >
                     {{ skill }}
                   </span>
@@ -235,8 +235,8 @@
                   rel="noopener noreferrer"
                   class="mt-6 inline-flex items-center gap-2
                          self-start font-mono text-sm
-                         text-[#5FD4F0] transition
-                         hover:text-white"
+                         text-[var(--accent)] transition
+                         hover:text-[var(--fg)]"
                 >
                   View credential
 
@@ -262,7 +262,7 @@
         <div>
           <p
             class="font-mono text-xs uppercase tracking-[0.25em]
-                   text-[#5FD4F0]"
+                   text-[var(--accent)]"
           >
             Credential library
           </p>
@@ -283,19 +283,19 @@
               (click)="setCategory(category.id)"
               class="shrink-0 rounded-full border px-4 py-2
                      font-mono text-xs transition duration-200"
-              [class.border-[#5FD4F0]]="
+              [class.border-[var(--accent)]]="
                 activeCategory() === category.id
               "
-              [class.bg-[#5FD4F0]]="
+              [class.bg-[var(--accent)]]="
                 activeCategory() === category.id
               "
-              [class.text-[#081017]]="
+              [class.text-[var(--accent-contrast)]]="
                 activeCategory() === category.id
               "
-              [class.border-[#263445]]="
+              [class.border-[var(--border)]]="
                 activeCategory() !== category.id
               "
-              [class.text-[#94A3B8]]="
+              [class.text-[var(--muted)]]="
                 activeCategory() !== category.id
               "
             >
@@ -314,15 +314,15 @@
         ) {
           <article
             class="group flex h-full flex-col rounded-2xl
-                   border border-[#1E2733] bg-[#10161F]/65
+                   border border-[var(--border-soft)] bg-[var(--bg-elevated)]/65
                    p-5 transition duration-300
                    hover:-translate-y-1
-                   hover:border-[#5FD4F0]/40"
+                   hover:border-[var(--accent)]/40"
           >
             <button
               type="button"
               class="relative aspect-[16/9] overflow-hidden
-                     rounded-xl bg-[#070A0F]"
+                     rounded-xl bg-[var(--bg)]"
               (click)="openPreview(certificate)"
             >
               <img
@@ -334,8 +334,8 @@
               />
 
               <div
-                class="absolute inset-0 bg-[#0A0E14]/0
-                       transition group-hover:bg-[#0A0E14]/20"
+                class="absolute inset-0 bg-[var(--bg)]/0
+                       transition group-hover:bg-[var(--bg)]/20"
               ></div>
             </button>
 
@@ -345,26 +345,26 @@
               >
                 <p
                   class="font-mono text-xs uppercase
-                         tracking-[0.15em] text-[#5FD4F0]"
+                         tracking-[0.15em] text-[var(--accent)]"
                 >
                   {{ certificate.issuer }}
                 </p>
 
                 <span
-                  class="font-mono text-xs text-[#64748B]"
+                  class="font-mono text-xs text-[var(--muted)]"
                 >
                   {{ certificate.issueDate }}
                 </span>
               </div>
 
               <h3
-                class="mt-3 text-lg font-semibold text-[#E7EDF5]"
+                class="mt-3 text-lg font-semibold text-[var(--fg)]"
               >
                 {{ certificate.title }}
               </h3>
 
               <p
-                class="mt-3 flex-1 text-sm leading-6 text-[#8B9AAF]"
+                class="mt-3 flex-1 text-sm leading-6 text-[var(--muted)]"
               >
                 {{ certificate.description }}
               </p>
@@ -375,9 +375,9 @@
                   track skill
                 ) {
                   <span
-                    class="rounded-full border border-[#263445]
+                    class="rounded-full border border-[var(--border)]
                            px-2.5 py-1 text-[11px]
-                           text-[#AFC0D2]"
+                           text-[var(--muted)]"
                   >
                     {{ skill }}
                   </span>
@@ -390,8 +390,8 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   class="mt-5 inline-flex items-center gap-2
-                         self-start text-sm text-[#5FD4F0]
-                         transition hover:text-white"
+                         self-start text-sm text-[var(--accent)]
+                         transition hover:text-[var(--fg)]"
                 >
                   View credential
 
@@ -407,17 +407,17 @@
         } @empty {
           <div
             class="col-span-full rounded-2xl border
-                   border-dashed border-[#263445]
+                   border-dashed border-[var(--border)]
                    px-6 py-16 text-center"
           >
             <span
               class="material-symbols-outlined text-4xl
-                     text-[#5FD4F0]"
+                     text-[var(--accent)]"
             >
               workspace_premium
             </span>
 
-            <p class="mt-4 text-[#94A3B8]">
+            <p class="mt-4 text-[var(--muted)]">
               No certifications found in this category.
             </p>
           </div>
@@ -439,8 +439,8 @@
   >
     <div
       class="relative max-h-[90vh] w-full max-w-5xl
-             overflow-auto rounded-2xl border border-[#263445]
-             bg-[#10161F] p-3 shadow-2xl"
+             overflow-auto rounded-2xl border border-[var(--border)]
+             bg-[var(--bg-elevated)] p-3 shadow-2xl"
     >
       <button
         type="button"
@@ -448,10 +448,10 @@
         aria-label="Close certificate preview"
         class="absolute right-5 top-5 z-10 flex h-11 w-11
                items-center justify-center rounded-full
-               border border-white/10 bg-[#0A0E14]/90
-               text-white backdrop-blur transition
-               hover:border-[#5FD4F0]
-               hover:text-[#5FD4F0]"
+               border border-[var(--border-soft)] bg-[var(--bg)]/90
+               text-[var(--fg)] backdrop-blur transition
+               hover:border-[var(--accent)]
+               hover:text-[var(--accent)]"
       >
         <span class="material-symbols-outlined">
           close
@@ -472,7 +472,7 @@
         <div>
           <p
             class="font-mono text-xs uppercase
-                   tracking-[0.18em] text-[#5FD4F0]"
+                   tracking-[0.18em] text-[var(--accent)]"
           >
             {{ certificate.issuer }}
           </p>
@@ -488,9 +488,9 @@
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-2
-                   rounded-full bg-[#5FD4F0] px-5 py-3
+                   rounded-full bg-[var(--accent)] px-5 py-3
                    font-mono text-sm font-semibold
-                   text-[#071017] transition hover:bg-white"
+                   text-[var(--accent-contrast)] transition hover:bg-white"
           >
             Verify credential
 

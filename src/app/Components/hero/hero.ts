@@ -197,7 +197,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < maxDist) {
-          ctx.strokeStyle = `rgba(95, 212, 240, ${0.12 * (1 - dist / maxDist)})`;
+          ctx.strokeStyle = `rgba(159, 180, 196, ${0.12 * (1 - dist / maxDist)})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -212,7 +212,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
       const nearMouse = mDist < mouseRadius;
 
       if (nearMouse) {
-        ctx.strokeStyle = `rgba(240, 168, 104, ${0.35 * (1 - mDist / mouseRadius)})`;
+        ctx.strokeStyle = `rgba(193, 80, 46, ${0.35 * (1 - mDist / mouseRadius)})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -221,7 +221,7 @@ export class HeroComponent implements OnInit, AfterViewInit, OnDestroy {
       }
 
       ctx.beginPath();
-      ctx.fillStyle = nearMouse ? '#F0A868' : 'rgba(95, 212, 240, 0.55)';
+      ctx.fillStyle = nearMouse ? '#C1502E' : 'rgba(159, 180, 196, 0.55)';
       ctx.arc(a.x, a.y, nearMouse ? 2.4 : 1.6, 0, Math.PI * 2);
       ctx.fill();
     }
