@@ -65,13 +65,25 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   // true while the page is scrolled to (near) the top; drives the desktop
   // nav's position between centered-top and docked-left
   readonly atTop = signal<boolean>(true);
+  readonly atBottom = signal<boolean>(false);
   private readonly navScrollThreshold = 64;
 
-  readonly navPositionClass = computed(() =>
-    this.atTop()
-      ? 'flex flex-row top-6 left-1/2 -translate-x-1/2 translate-y-0'
-      : 'flex flex-col left-6 top-1/2 -translate-y-1/2 translate-x-0',
-  );
+  // brief comet-flare flash when the nav docks into a new spot
+  readonly navJustMoved = signal(false);
+  private navDockCategory: 'top' | 'bottom' | 'left' = 'top';
+  private navCometTimer?: ReturnType<typeof setTimeout>;
+
+  readonly navPositionClass = computed(() => {
+    if (this.atTop()) {
+      return 'flex flex-row top-6 left-1/2 -translate-x-1/2 translate-y-0';
+    }
+
+    if (this.atBottom()) {
+      return 'flex flex-row bottom-6 top-auto left-1/2 -translate-x-1/2 translate-y-0';
+    }
+
+    return 'flex flex-col left-6 top-1/2 -translate-y-1/2 translate-x-0';
+  });
 
   private observer?: IntersectionObserver;
 
@@ -94,6 +106,10 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
     window.removeEventListener('resize', this.resizeHandler);
     window.removeEventListener('pointermove', this.pointerMoveHandler);
     window.removeEventListener('pointerup', this.pointerUpHandler);
+
+    if (this.navCometTimer) {
+      clearTimeout(this.navCometTimer);
+    }
   }
 
   private setupObserver(): void {
@@ -135,7 +151,43 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
       this.cdr.markForCheck();
     }
     this.atTop.set(y <= this.navScrollThreshold);
+
+    const documentHeight = document.documentElement.scrollHeight;
+    const viewportBottom = y + window.innerHeight;
+    this.atBottom.set(documentHeight - viewportBottom <= this.navScrollThreshold);
+
+    if (this.atTop() || this.atBottom()) {
+      // a prior manual drag pins the nav via inline styles, which would
+      // otherwise outrank the top/bottom centering classes forever
+      this.clearDragPosition();
+    }
+
+    const dockCategory = this.atTop() ? 'top' : this.atBottom() ? 'bottom' : 'left';
+    if (dockCategory !== this.navDockCategory) {
+      this.navDockCategory = dockCategory;
+      this.triggerNavComet();
+    }
+
     this.lastScroll = y;
+  }
+
+  private clearDragPosition(): void {
+    const nav = this.desktopNav?.nativeElement;
+    if (!nav) return;
+    nav.style.top = '';
+    nav.style.transform = '';
+  }
+
+  private triggerNavComet(): void {
+    if (this.navCometTimer) {
+      clearTimeout(this.navCometTimer);
+    }
+
+    this.navJustMoved.set(true);
+
+    this.navCometTimer = setTimeout(() => {
+      this.navJustMoved.set(false);
+    }, 650);
   }
 
   private onWindowSizeChange(): void {

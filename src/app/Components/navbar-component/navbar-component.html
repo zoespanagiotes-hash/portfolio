@@ -3,17 +3,18 @@
   #desktopNav
   (pointerdown)="startDrag($event)"
   [class.at-projects]="activeId() === 'projects'"
+  [class.nav-comet]="navJustMoved()"
   [class]="navPositionClass()"
   class="z-50 hidden rounded-full border border-[var(--border-soft)] bg-[var(--bg-elevated)]/80 px-2 py-4 font-mono text-xs text-[var(--muted)] shadow-xl backdrop-blur transition-all duration-500 ease-in-out fixed lg:block"
   aria-label="{{ 'navbar.ariaLabel' | translate }}"
 >
   <div
-    [ngClass]="atTop() ? 'flex-row' : 'flex-col'"
+    [ngClass]="atTop() || atBottom() ? 'flex-row' : 'flex-col'"
     class="relative flex items-center gap-2 md:gap-8"
   >
     <div
       [ngClass]="
-        atTop()
+        atTop() || atBottom()
           ? 'top-1/2 left-3 right-3 h-px -translate-y-1/2'
           : 'left-1/2 top-4 bottom-4 w-px -translate-x-1/2'
       "
