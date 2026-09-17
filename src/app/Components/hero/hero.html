@@ -4,32 +4,48 @@
 >
   <!-- ambient background: fine grid + two soft glows (θυμίζει το φωτισμό γραφείου / neon sign) -->
   <div class="hero-grid pointer-events-none absolute inset-0 opacity-40"></div>
+  <canvas
+    #particleCanvas
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0"
+  ></canvas>
   <div
     class="pointer-events-none absolute -top-40 left-1/4 h-[32rem] w-[32rem] rounded-full bg-[#5FD4F0]/10 blur-[120px]"
   ></div>
-  <div
-    class="hidden absolute right-4 top-4 z-20 lg:flex w-max flex-col gap-3 rounded-3xl border border-[#334155] bg-[#0A0E14]/90 px-2 py-2 text-sm text-[#E7EDF5] shadow-lg shadow-[#020617]/40 lg:top-6 lg:right-6 lg:flex-row lg:gap-2"
-  >
+  <div class="hidden absolute right-4 top-4 z-20 lg:flex lg:top-6 lg:right-6 items-center gap-3">
     <button
       type="button"
-      class="rounded-full px-3 py-1 transition duration-200"
-      [class.bg-[#5FD4F0]]="language() === 'en'"
-      [class.text-[#071118]]="language() === 'en'"
-      [class.text-[#CBD5E1]]="language() !== 'en'"
-      (click)="setLanguage('en')"
+      disabled
+      class="cursor-not-allowed rounded-full border border-[#1E2733] bg-[#0A0E14]/90 px-4 py-2 text-sm font-medium text-[#CBD5E1] opacity-60 shadow-lg shadow-[#020617]/40 transition duration-200"
+      aria-label="{{ 'hero.resumeButton' | translate }} {{ 'hero.resumeComingSoon' | translate }}"
     >
-      EN
+      {{ 'hero.resumeButton' | translate }}
     </button>
-    <button
-      type="button"
-      class="rounded-full px-3 py-1 transition duration-200"
-      [class.bg-[#5FD4F0]]="language() === 'el'"
-      [class.text-[#071118]]="language() === 'el'"
-      [class.text-[#CBD5E1]]="language() !== 'el'"
-      (click)="setLanguage('el')"
+
+    <div
+      class="flex w-max flex-row gap-2 rounded-3xl border border-[#334155] bg-[#0A0E14]/90 px-2 py-2 text-sm text-[#E7EDF5] shadow-lg shadow-[#020617]/40"
     >
-      EL
-    </button>
+      <button
+        type="button"
+        class="rounded-full px-3 py-1 transition duration-200"
+        [class.bg-[#5FD4F0]]="language() === 'en'"
+        [class.text-[#071118]]="language() === 'en'"
+        [class.text-[#CBD5E1]]="language() !== 'en'"
+        (click)="setLanguage('en')"
+      >
+        EN
+      </button>
+      <button
+        type="button"
+        class="rounded-full px-3 py-1 transition duration-200"
+        [class.bg-[#5FD4F0]]="language() === 'el'"
+        [class.text-[#071118]]="language() === 'el'"
+        [class.text-[#CBD5E1]]="language() !== 'el'"
+        (click)="setLanguage('el')"
+      >
+        EL
+      </button>
+    </div>
   </div>
 
   <div

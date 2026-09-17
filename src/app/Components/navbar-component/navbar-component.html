@@ -3,12 +3,21 @@
   #desktopNav
   (pointerdown)="startDrag($event)"
   [class.at-projects]="activeId() === 'projects'"
-  class="fixed left-6 top-1/2 z-50 hidden -translate-y-1/2 rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur lg:block"
+  [class]="navPositionClass()"
+  class="z-50 hidden rounded-full border border-[#1E2733] bg-[#10161F]/80 px-2 py-4 font-mono text-xs text-[#7C8A9C] shadow-xl backdrop-blur transition-all duration-500 ease-in-out fixed lg:block"
   aria-label="{{ 'navbar.ariaLabel' | translate }}"
 >
-  <div class="relative flex flex-col items-center gap-2 md:gap-8">
+  <div
+    [ngClass]="atTop() ? 'flex-row' : 'flex-col'"
+    class="relative flex items-center gap-2 md:gap-8"
+  >
     <div
-      class="pointer-events-none absolute left-1/2 top-1 bottom-1 w-px -translate-x-1/2 bg-[#1E2733]"
+      [ngClass]="
+        atTop()
+          ? 'top-1/2 left-3 right-3 h-px -translate-y-1/2'
+          : 'left-1/2 top-4 bottom-4 w-px -translate-x-1/2'
+      "
+      class="pointer-events-none absolute bg-[#1E2733]"
     ></div>
 
     @for (section of sections; track section) {
@@ -89,7 +98,7 @@
   <div
     *ngIf="mobileOpen"
     id="mobile-nav"
-    class="mt-2 w-52 rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg"
+    class="mt-2 w-fit rounded-lg border border-[#1E2733] bg-[var(--bg)] p-3 shadow-lg"
   >
     <div
       class="mb-3 flex items-center justify-center gap-2 rounded-2xl border border-[#334155] bg-[#0A0E14]/80 p-2 text-sm text-[#CFE9F2]"
@@ -116,12 +125,12 @@
       </button>
     </div>
 
-    <nav class="flex flex-col gap-1">
+    <nav class="flex flex-col gap-1 h-fit py-2 w-56">
       @for (section of sections; track section) {
         <a
           [attr.href]="'/#' + section.id"
           (click)="onLinkClick($event, section.id)"
-          class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-[var(--fg)] transition hover:bg-[#0F1720]/60"
+          class="flex items-center gap-3 rounded-lg border-2 border-[#334155]/40 px-3 py-4 text-sm text-[var(--fg)] transition hover:bg-[#0F1720]/60"
         >
           <span class="material-symbols-outlined text-lg">
             {{ section.icon }}

@@ -1,0 +1,33 @@
+:host {
+  display: contents;
+}
+
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  background: radial-gradient(circle, rgba(95, 212, 240, 0.35), rgba(95, 212, 240, 0) 60%);
+  mix-blend-mode: screen;
+  transition:
+    opacity 5ms ease,
+    background 5ms ease;
+  will-change: transform;
+}
+
+.cursor-glow--active {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(240, 168, 104, 0.5), rgba(240, 168, 104, 0) 40%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none;
+  }
+}

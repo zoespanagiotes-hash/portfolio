@@ -1,59 +1,77 @@
-# Portfolio
+# Panagiotis Zois — Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.1.
+My personal developer portfolio: a single-page Angular app that presents who I am, what I work with, my professional/academic timeline and how to get in touch.
 
-## Development server
+Live sections: **Home · About · Skills · My Journey · Contact**, plus a standalone **Certifications** page.
 
-To start a local development server, run:
+## Features
 
-```bash
-ng serve
-```
+- **Standalone, signal-based Angular components** (Angular 22) — no NgModules, `OnPush` change detection throughout.
+- **Floating desktop navigation** with scroll-spy (`IntersectionObserver`), a draggable position, and a smooth transition from a centered dock at the top of the page to a docked left-side rail once you scroll. Collapses into a hamburger menu on mobile.
+- **EN / EL localization** through a lightweight custom `TranslateService` and pipe backed by JSON dictionaries (`public/i18n/en.json`, `public/i18n/el.json`).
+- **Supabase-backed assets** — profile images and documents are served from Supabase Storage via `AssetService`, with support for public URLs, signed URLs and on-the-fly image transforms.
+- **Tailwind CSS 4** utility-first styling with a dark, neon-glass aesthetic.
+- **Timeline component** covering career and education history, with expandable entries.
+- Deployed as a static SPA on **Netlify** (`public/_redirects` handles client-side routing).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Tech stack
 
-## Code scaffolding
+| Layer | Tools |
+| --- | --- |
+| Framework | Angular 22 (standalone components, signals, `@if`/`@for` control flow) |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| Data / Storage | Supabase (Storage + client SDK) |
+| i18n | Custom `TranslateService` / `TranslatePipe` |
+| Testing | Vitest |
+| Hosting | Netlify |
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting started
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Install dependencies:
 
 ```bash
-ng test
+npm install
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+Start a local dev server (auto-reloads on file changes):
 
 ```bash
-ng e2e
+npm start
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Then open `http://localhost:4200`.
 
-## Additional Resources
+### Build
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+```bash
+npm run build
+```
+
+Production artifacts are emitted to `dist/portfolio`.
+
+### Tests
+
+```bash
+npm test
+```
+
+Runs the unit test suite with Vitest.
+
+## Project structure
+
+```text
+src/app/
+├── Components/        # Navbar, hero, about, skills, timeline, footer, loading spinner
+├── Services/           # AssetService (Supabase-backed asset/image loading)
+├── pages/               # mainPage (home) and certifications route
+├── environments/       # Environment configuration (Supabase keys, etc.)
+├── translate.service.ts / translate.pipe.ts   # i18n
+public/
+├── i18n/               # en.json / el.json dictionaries
+├── _redirects           # Netlify SPA redirect rule
+```
+
+## Environment variables
+
+Supabase credentials are read from `src/app/environments/environment.dev.ts` (`supabaseUrl`, `supabaseAnonKey`). Provide your own Supabase project values if you fork this repository.

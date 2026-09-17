@@ -1,8 +1,10 @@
-@use "tailwindcss";
+@use 'tailwindcss';
 
 :root {
   --bg: #f8fafc; /* light background */
   --fg: #0a0e14; /* light foreground */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .dark {

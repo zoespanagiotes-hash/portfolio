@@ -1,6 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, OnDestroy, computed, signal } from '@angular/core';
 import { TranslatePipe } from '../../translate.pipe';
-import { LoadingSpinner } from '../../loading-spinner/loading-spinner';
 
 type SkillCategory = 'skills' | 'tools' | 'services';
 
@@ -19,40 +18,17 @@ interface ServiceItem {
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [TranslatePipe, LoadingSpinner],
+  imports: [TranslatePipe],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
-export class Skills {
+export class Skills implements OnDestroy {
   readonly activeCategory = signal<SkillCategory>('skills');
-  readonly loadingItems = signal<Record<string, boolean>>({
-    'skills.tech.angular': false,
-    'skills.tech.typescript': false,
-    'skills.tech.javascript': false,
-    'skills.tech.html': false,
-    'skills.tech.css': false,
-    'skills.tech.tailwind': false,
-    'skills.tools.git': false,
-    'skills.tools.github': false,
-    'skills.tools.vscode': false,
-    'skills.tools.postman': false,
-    'skills.tools.figma': false,
-    'skills.tools.npm': false,
-    'skills.services.webDevelopment.title': false,
-    'skills.services.uiuxDesign.title': false,
-    'skills.services.customCms.title': false,
-    'skills.services.mobileApp.title': false,
-    'skills.services.ecommerce.title': false,
-    'skills.services.apiIntegration.title': false,
-  });
 
-  private getCardKey(item: SkillItem | ServiceItem): string {
-    return 'name' in item ? item.name : item.title;
-  }
-
-  isItemLoading(item: SkillItem | ServiceItem): boolean {
-    return this.loadingItems()[this.getCardKey(item)] || false;
-  }
+  private readonly categoryOrder: SkillCategory[] = ['skills', 'tools', 'services'];
+  private dragStartX = 0;
+  private dragStartY = 0;
+  private readonly pointerUpHandler = (event: PointerEvent) => this.onPointerUp(event);
 
   readonly skills: SkillItem[] = [
     {
@@ -158,34 +134,41 @@ export class Skills {
     }
   });
 
-  setActiveCategory(category: SkillCategory): void {
-    if (this.activeCategory() === category) {
+  // pointer events cover mouse (desktop drag) and touch in one handler pair
+  onPointerDown(event: PointerEvent): void {
+    this.dragStartX = event.clientX;
+    this.dragStartY = event.clientY;
+    window.addEventListener('pointerup', this.pointerUpHandler);
+  }
+
+  private onPointerUp(event: PointerEvent): void {
+    window.removeEventListener('pointerup', this.pointerUpHandler);
+
+    const deltaX = event.clientX - this.dragStartX;
+    const deltaY = event.clientY - this.dragStartY;
+
+    const minSwipeDistance = 50;
+
+    if (Math.abs(deltaX) < minSwipeDistance || Math.abs(deltaX) < Math.abs(deltaY)) {
       return;
     }
 
-    const nextItems =
-      category === 'tools' ? this.tools : category === 'services' ? this.services : this.skills;
+    const currentIndex = this.categoryOrder.indexOf(this.activeCategory());
+    const nextIndex =
+      deltaX < 0
+        ? Math.min(currentIndex + 1, this.categoryOrder.length - 1)
+        : Math.max(currentIndex - 1, 0);
 
-    const nextLoading = nextItems.reduce<Record<string, boolean>>((acc, item) => {
-      acc[this.getCardKey(item)] = true;
-      return acc;
-    }, {});
+    if (nextIndex !== currentIndex) {
+      this.setActiveCategory(this.categoryOrder[nextIndex]);
+    }
+  }
 
-    this.loadingItems.update(current => ({
-      ...current,
-      ...nextLoading,
-    }));
-
+  setActiveCategory(category: SkillCategory): void {
     this.activeCategory.set(category);
+  }
 
-    nextItems.forEach((item, index) => {
-      const key = this.getCardKey(item);
-      setTimeout(() => {
-        this.loadingItems.update(current => ({
-          ...current,
-          [key]: false,
-        }));
-      }, 150 + index * 120);
-    });
+  ngOnDestroy(): void {
+    window.removeEventListener('pointerup', this.pointerUpHandler);
   }
 }

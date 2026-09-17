@@ -1,0 +1,34 @@
+.swipe-panel {
+  cursor: grab;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.swipe-panel:active {
+  cursor: grabbing;
+}
+
+.swipe-panel * {
+  -webkit-user-drag: none;
+}
+
+.skill-card {
+  animation: skill-card-in 420ms ease-out both;
+}
+
+@keyframes skill-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skill-card {
+    animation: none;
+  }
+}

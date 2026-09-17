@@ -4,6 +4,7 @@ import {
   OnDestroy,
   Input,
   signal,
+  computed,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   ViewChild,
@@ -60,6 +61,17 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
   ];
 
   readonly activeId = signal<string>('');
+
+  // true while the page is scrolled to (near) the top; drives the desktop
+  // nav's position between centered-top and docked-left
+  readonly atTop = signal<boolean>(true);
+  private readonly navScrollThreshold = 64;
+
+  readonly navPositionClass = computed(() =>
+    this.atTop()
+      ? 'flex flex-row top-6 left-1/2 -translate-x-1/2 translate-y-0'
+      : 'flex flex-col left-6 top-1/2 -translate-y-1/2 translate-x-0',
+  );
 
   private observer?: IntersectionObserver;
 
@@ -122,6 +134,7 @@ export class NavbarComponent implements AfterViewInit, OnDestroy {
       this.mobileBurgerVisible = shouldShow;
       this.cdr.markForCheck();
     }
+    this.atTop.set(y <= this.navScrollThreshold);
     this.lastScroll = y;
   }
 
